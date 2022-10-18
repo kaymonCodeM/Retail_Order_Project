@@ -20,6 +20,9 @@ public class Order {
     private boolean complete;
 
     @ManyToOne
+    @JoinColumn(name = "paymentId")
+    private Payment payment;
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
@@ -27,6 +30,14 @@ public class Order {
     private List<Item> items;
 
     public Order() {
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public long getOrderId() {

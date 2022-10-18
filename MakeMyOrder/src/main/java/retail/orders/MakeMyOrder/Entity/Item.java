@@ -26,8 +26,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(long itemId, String type, String imageUrl, String description, int quantity, double price) {
-        this.itemId = itemId;
+    public Item(String type, String imageUrl, String description, int quantity, double price) {
         this.type = type;
         this.imageUrl = imageUrl;
         this.description = description;

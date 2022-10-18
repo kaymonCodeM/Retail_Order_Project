@@ -15,6 +15,9 @@ public class User {
     private List<String> roles;
 
     @OneToOne(mappedBy = "user")
+    private Payment payment;
+
+    @OneToOne(mappedBy = "user")
     private Cart cart;
 
     @OneToOne(mappedBy = "user")
@@ -34,6 +37,14 @@ public class User {
         this.password = password;
         this.roles = roles;
         this.active=true;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public long getUserId() {
