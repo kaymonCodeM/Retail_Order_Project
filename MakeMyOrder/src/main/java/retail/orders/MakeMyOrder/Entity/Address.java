@@ -15,8 +15,7 @@ public class Address {
     private String State;
     private String zip;
 
-    @OneToOne
-    @JoinColumn(name = "userId")
+    @OneToOne(mappedBy = "address")
     private User user;
 
     public Address() {

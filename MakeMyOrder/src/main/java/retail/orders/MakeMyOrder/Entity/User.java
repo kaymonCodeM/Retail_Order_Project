@@ -12,18 +12,18 @@ public class User {
     private String username;
     private String password;
     private boolean active;
-    private List<String> roles;
+    private String roles;
 
-    @OneToOne(mappedBy = "user")
-    private Payment payment;
+    @OneToMany(mappedBy = "user")
+    private List<Payment> payments;
 
-    @OneToOne(mappedBy = "user")
-    private Cart cart;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "contactId")
     private Contact contact;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "addressId")
     private Address address;
 
     @OneToMany(mappedBy = "user")
@@ -32,19 +32,23 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, List<String> roles) {
+    public User(String username, String password, String roles, List<Payment> payments, Contact contact, Address address, List<Order> orders) {
         this.username = username;
         this.password = password;
+        this.active = true;
         this.roles = roles;
-        this.active=true;
+        this.payments = payments;
+        this.contact = contact;
+        this.address = address;
+        this.orders = orders;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public List<Payment> getPayments() {
+        return payments;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     public long getUserId() {
@@ -79,20 +83,12 @@ public class User {
         this.active = active;
     }
 
-    public List<String> getRoles() {
+    public String getRoles() {
         return roles;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(String roles) {
         this.roles = roles;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
     }
 
     public Contact getContact() {

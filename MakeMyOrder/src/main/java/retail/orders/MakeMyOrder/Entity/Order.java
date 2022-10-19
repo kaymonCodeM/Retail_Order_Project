@@ -14,30 +14,32 @@ public class Order {
     private long orderId;
     private Date orderDate;
     private Date deliveryDate;
-    private Address deliveryLocation;
     private double deliveryCharge;
     private boolean shipped;
     private boolean complete;
 
-    @ManyToOne
-    @JoinColumn(name = "paymentId")
-    private Payment payment;
+    private String orderSummeryUrl;
+
+    @ManyToMany
+    @JoinTable(name = "items",joinColumns = @JoinColumn(name = "orderId"),inverseJoinColumns = @JoinColumn(name = "itemId"))
+    private List<Item> items;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
-    @ManyToMany(mappedBy = "orders")
-    private List<Item> items;
-
     public Order() {
     }
 
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public Order(Date orderDate, Date deliveryDate, double deliveryCharge, boolean shipped, boolean complete, String orderSummeryUrl, List<Item> items, User user) {
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.deliveryCharge = deliveryCharge;
+        this.shipped = shipped;
+        this.complete = complete;
+        this.orderSummeryUrl = orderSummeryUrl;
+        this.items = items;
+        this.user = user;
     }
 
     public long getOrderId() {
@@ -64,14 +66,6 @@ public class Order {
         this.deliveryDate = deliveryDate;
     }
 
-    public Address getDeliveryLocation() {
-        return deliveryLocation;
-    }
-
-    public void setDeliveryLocation(Address deliveryLocation) {
-        this.deliveryLocation = deliveryLocation;
-    }
-
     public double getDeliveryCharge() {
         return deliveryCharge;
     }
@@ -96,12 +90,12 @@ public class Order {
         this.complete = complete;
     }
 
-    public User getUser() {
-        return user;
+    public String getOrderSummeryUrl() {
+        return orderSummeryUrl;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setOrderSummeryUrl(String orderSummeryUrl) {
+        this.orderSummeryUrl = orderSummeryUrl;
     }
 
     public List<Item> getItems() {
@@ -110,5 +104,13 @@ public class Order {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -10,6 +10,8 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long paymentId;
+
+    private String cardHolder;
     private long cardNumber;
     private Date expirationDate;
     private int cvv;
@@ -18,18 +20,19 @@ public class Payment {
     @OneToMany(mappedBy = "payment")
     private List<Order> orders;
 
-    @OneToOne
-    @JoinColumn(name = "userid")
+    @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
 
     public Payment() {
     }
 
-    public Payment(long cardNumber, Date expirationDate, int cvv, String zip) {
-        this.cardNumber = cardNumber;
-        this.expirationDate = expirationDate;
-        this.cvv = cvv;
-        this.zip = zip;
+    public String getCardHolder() {
+        return cardHolder;
+    }
+
+    public void setCardHolder(String cardHolder) {
+        this.cardHolder = cardHolder;
     }
 
     public long getPaymentId() {

@@ -9,29 +9,36 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long itemId;
+
+    private String name;
     private String type;
     private String imageUrl;
     private String description;
     private int quantity;
     private double price;
 
-    @ManyToMany
-    @JoinTable(name = "orders",joinColumns = @JoinColumn(name = "itemId"),inverseJoinColumns = @JoinColumn(name = "orderId"))
+    @ManyToMany(mappedBy = "items")
     private List<Order> orders;
 
-    @ManyToMany
-    @JoinTable(name = "carts",joinColumns = @JoinColumn(name = "itemId"),inverseJoinColumns = @JoinColumn(name = "cartId"))
-    private List<Cart> carts;
 
     public Item() {
     }
 
-    public Item(String type, String imageUrl, String description, int quantity, double price) {
+    public Item(String name,String type, String imageUrl, String description, int quantity, double price, List<Order> orders) {
         this.type = type;
         this.imageUrl = imageUrl;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
+        this.orders = orders;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getItemId() {
@@ -90,11 +97,4 @@ public class Item {
         this.orders = orders;
     }
 
-    public List<Cart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
-    }
 }

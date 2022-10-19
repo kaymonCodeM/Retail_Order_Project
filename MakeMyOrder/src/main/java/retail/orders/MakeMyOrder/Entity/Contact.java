@@ -1,6 +1,7 @@
 package retail.orders.MakeMyOrder.Entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_contact")
@@ -11,8 +12,7 @@ public class Contact {
     private String email;
     private String phoneNumber;
 
-    @OneToOne
-    @JoinColumn(name = "userId")
+    @OneToOne(mappedBy = "contact")
     private User user;
 
     public Contact() {
