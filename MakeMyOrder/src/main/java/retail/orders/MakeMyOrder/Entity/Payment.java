@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "tbl_payment")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

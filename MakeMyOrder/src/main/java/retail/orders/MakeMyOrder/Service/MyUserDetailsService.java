@@ -10,9 +10,9 @@ public interface MyUserDetailsService {
     User getUserByUsername(String username);
     String addUser(String username,String password, String roles);
 
-    String updatePassword(long userId,String password);
+    String updatePasswordById(long userId,String password);
 
-    String updateUsername(long userId,String Username);
-    String deleteUser(long userId);
+    String updateUsernameById(long userId,String Username);
+    String deleteUserById(long userId);
     //PasswordEncoder getEncoder();
 }

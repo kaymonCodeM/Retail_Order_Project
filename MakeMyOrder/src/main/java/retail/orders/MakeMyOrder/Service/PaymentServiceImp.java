@@ -25,4 +25,19 @@ public class PaymentServiceImp implements PaymentService {
         }
     }
 
+    @Override
+    public Payment addPayment(long userId, long paymentId) {
+        return null;
+    }
+
+    @Override
+    public Payment updatePayment(long userId,Payment payment) {
+        return null;
+    }
+
+    @Override
+    public String removePaymentById(long paymentId) {
+        return null;
+    }
+
 }

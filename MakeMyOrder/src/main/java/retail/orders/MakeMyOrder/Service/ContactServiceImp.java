@@ -3,8 +3,11 @@ package retail.orders.MakeMyOrder.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.Contact;
+import retail.orders.MakeMyOrder.Entity.User;
 import retail.orders.MakeMyOrder.Repository.ContactRepository;
 import retail.orders.MakeMyOrder.Repository.UserRepository;
+
+import java.util.Optional;
 
 @Service
 public class ContactServiceImp implements ContactService{
@@ -15,26 +18,39 @@ public class ContactServiceImp implements ContactService{
     private ContactRepository contactRepository;
 
     @Override
-    public Contact updatePhone(String phoneNumber, Contact contact) {
-        contact.setPhoneNumber(phoneNumber);
+    public Contact getContactById(long contactId) {
+        Optional<Contact> contact = contactRepository.findById(contactId);
+        if(contact.isPresent()){
+            return contact.get();
+        }else {
+            throw new RuntimeException("Contact was not found by id: " + contactId);
+        }
+    }
+
+    @Override
+    public Contact updateContact(Contact contact) {
+        Contact newContact = contactRepository.save(contact);
+        contact.getUser().setContact(newContact);
+        userRepository.save(contact.getUser());
+        return contactRepository.save(newContact);
+    }
+
+
+    @Override
+    public Contact clearPhoneById(long contactId) {
+        Contact contact = getContactById(contactId);
+        contact.setPhoneNumber(null);
+        contact.getUser().setContact(contact);
+        userRepository.save(contact.getUser());
         return contactRepository.save(contact);
     }
 
     @Override
-    public Contact updateEmail(String email, Contact contact) {
-        contact.setEmail(email);
-        return contactRepository.save(contact);
-    }
-
-    @Override
-    public Contact clearPhone(Contact contact) {
-        contact.setPhoneNumber("");
-        return contactRepository.save(contact);
-    }
-
-    @Override
-    public Contact clearEmail(Contact contact) {
-        contact.setEmail("");
+    public Contact clearEmailById(long contactId) {
+        Contact contact = getContactById(contactId);
+        contact.setEmail(null);
+        contact.getUser().setContact(contact);
+        userRepository.save(contact.getUser());
         return contactRepository.save(contact);
     }
 }

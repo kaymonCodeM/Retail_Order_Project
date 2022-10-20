@@ -71,7 +71,7 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     }
 
     @Override
-    public String updatePassword(long userId,String password) {
+    public String updatePasswordById(long userId,String password) {
         //String passwordEncode = passwordEncoder.encode(password);
         Optional<User> innerUser = userRepository.findById(userId);
         if(innerUser.isPresent()){
@@ -85,20 +85,25 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     }
 
     @Override
-    public String updateUsername(long userId, String username) {
-        Optional<User> innerUser = userRepository.findById(userId);
-        if(innerUser.isPresent()){
-            User user = innerUser.get();
-            user.setUsername(username);
-            userRepository.save(user);
-        }else {
-            return "User was not found by Id: " + userId;
+    public String updateUsernameById(long userId, String username) {
+        Optional<User> updateUser = userRepository.findByUsername(username);
+        if(updateUser.isEmpty()) {
+            Optional<User> innerUser = userRepository.findById(userId);
+            if (innerUser.isPresent()) {
+                User user = innerUser.get();
+                user.setUsername(username);
+                userRepository.save(user);
+            } else {
+                return "User was not found by Id: " + userId;
+            }
+        }else{
+            return "User is already in the system";
         }
         return "Username updated successfully";
     }
 
     @Override
-    public String deleteUser(long userId) {
+    public String deleteUserById(long userId) {
         Optional<User> innerUser = userRepository.findById(userId);
         if(innerUser.isPresent()){
             User user = innerUser.get();
@@ -106,12 +111,14 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
             for (Payment payment: user.getPayments()){
                 paymentRepository.delete(payment);
             }
+
             user.getPayments().clear();
 
             user.getOrders().clear();
 
             addressRepository.delete(user.getAddress());
             contactRepository.delete(user.getContact());
+
             this.userRepository.delete(user);
         }else {
             return "User is not found id: " +userId;
