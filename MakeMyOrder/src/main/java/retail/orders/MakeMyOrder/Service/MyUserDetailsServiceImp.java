@@ -1,10 +1,6 @@
 package retail.orders.MakeMyOrder.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Repository.*;
@@ -27,13 +23,10 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     private ContactRepository contactRepository;
 
     @Autowired
-    private OrderRepository orderRepository;
-
-    @Autowired
     private PaymentRepository paymentRepository;
 
 
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    //private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
     @Override
@@ -63,9 +56,9 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
             Address saveAddress = addressRepository.save(address);
             Contact saveContact = contactRepository.save(contact);
 
-            String passwordEncode = passwordEncoder.encode(password);
+            //String passwordEncode = passwordEncoder.encode(password);
 
-            User user = new User(username,passwordEncode,roles,new ArrayList<>(),saveContact,saveAddress,new ArrayList<>());
+            User user = new User(username,password,roles,new ArrayList<>(),saveContact,saveAddress,new ArrayList<>());
 
             saveAddress.setUser(user);
             saveContact.setUser(user);
@@ -79,11 +72,11 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
 
     @Override
     public String updatePassword(long userId,String password) {
-        String passwordEncode = passwordEncoder.encode(password);
+        //String passwordEncode = passwordEncoder.encode(password);
         Optional<User> innerUser = userRepository.findById(userId);
         if(innerUser.isPresent()){
             User user = innerUser.get();
-            user.setPassword(passwordEncode);
+            user.setPassword(password);
             userRepository.save(user);
         }else {
             return "User was not found by Id: " + userId;
@@ -125,16 +118,16 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
         }
         return "User Deleted by Id: " + userId;
     }
-
-    @Override
-    public PasswordEncoder getEncoder() {
-        return this.passwordEncoder;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username)
-                .map(MyUserDetails::new)
-                .orElseThrow(()->new UsernameNotFoundException("Username not found: " + username));
-    }
+//
+//    @Override
+//    public PasswordEncoder getEncoder() {
+//        return this.passwordEncoder;
+//    }
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        return userRepository.findByUsername(username)
+//                .map(MyUserDetails::new)
+//                .orElseThrow(()->new UsernameNotFoundException("Username not found: " + username));
+//    }
 }

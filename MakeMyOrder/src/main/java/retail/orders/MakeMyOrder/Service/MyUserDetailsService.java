@@ -1,12 +1,10 @@
 package retail.orders.MakeMyOrder.Service;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import retail.orders.MakeMyOrder.Entity.User;
 
 import java.util.List;
 
-public interface MyUserDetailsService extends UserDetailsService {
+public interface MyUserDetailsService {
 
     List<User> findAllUsers();
     User getUserByUsername(String username);
@@ -16,5 +14,5 @@ public interface MyUserDetailsService extends UserDetailsService {
 
     String updateUsername(long userId,String Username);
     String deleteUser(long userId);
-    PasswordEncoder getEncoder();
+    //PasswordEncoder getEncoder();
 }

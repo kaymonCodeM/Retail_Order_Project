@@ -17,6 +17,10 @@ public class Item {
     private int quantity;
     private double price;
 
+    private String size;
+
+    private double weight;
+
     @ManyToMany(mappedBy = "items")
     private List<Order> orders;
 
@@ -24,13 +28,32 @@ public class Item {
     public Item() {
     }
 
-    public Item(String name,String type, String imageUrl, String description, int quantity, double price, List<Order> orders) {
+    public Item(String name, String type, String imageUrl, String description, int quantity, double price, String size, double weight, List<Order> orders) {
+        this.name = name;
         this.type = type;
         this.imageUrl = imageUrl;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
+        this.size = size;
+        this.weight = weight;
         this.orders = orders;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     public String getName() {
@@ -97,4 +120,15 @@ public class Item {
         this.orders = orders;
     }
 
+    @Override
+    public String toString() {
+        return "Item:\n" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", quantity=" + quantity +
+                ", price=$" + price +
+                ", size='" + size + '\'' +
+                ", weight=" + weight + "\n" +
+                ", description: " + description;
+    }
 }

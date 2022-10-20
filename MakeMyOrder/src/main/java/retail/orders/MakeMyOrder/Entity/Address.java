@@ -76,4 +76,14 @@ public class Address {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Address:\n" +
+                "streetAddress='" + streetAddress + '\'' +
+                ", Country='" + Country + '\'' +
+                ", city='" + city + '\'' +
+                ", State='" + State + '\'' +
+                ", zip='" + zip + '\'';
+    }
 }

@@ -7,6 +7,7 @@ import retail.orders.MakeMyOrder.Repository.ItemRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ItemServiceImp implements ItemService{
@@ -21,12 +22,17 @@ public class ItemServiceImp implements ItemService{
 
     @Override
     public Item getItemById(long itemId) {
-        return itemRepository.getReferenceById(itemId);
+        Optional<Item> item = itemRepository.findById(itemId);
+        if(item.isPresent()){
+            return item.get();
+        }else {
+            throw new RuntimeException("Item was not found by id: " + itemId);
+        }
     }
 
     @Override
-    public Item addItem(String name,String type, String imageUrl, String description, int quantity, double price) {
-        Item item = new Item(name,type,imageUrl,description,quantity,price,new ArrayList<>());
+    public Item addItem(String name,String type, String imageUrl, String description, int quantity, double price,String size,double weight) {
+        Item item = new Item(name,type,imageUrl,description,quantity,price,size,weight,new ArrayList<>());
         return itemRepository.save(item);
     }
 

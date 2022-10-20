@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.Contact;
 import retail.orders.MakeMyOrder.Repository.ContactRepository;
+import retail.orders.MakeMyOrder.Repository.UserRepository;
 
 @Service
 public class ContactServiceImp implements ContactService{
 
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private ContactRepository contactRepository;
 

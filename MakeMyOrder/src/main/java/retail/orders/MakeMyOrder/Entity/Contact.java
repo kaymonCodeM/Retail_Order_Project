@@ -49,4 +49,11 @@ public class Contact {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Contact:\n" +
+                "email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'';
+    }
 }

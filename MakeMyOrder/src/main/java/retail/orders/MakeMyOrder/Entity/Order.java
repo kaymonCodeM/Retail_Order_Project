@@ -3,6 +3,7 @@ package retail.orders.MakeMyOrder.Entity;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,11 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderId;
-    private Date orderDate;
-    private Date deliveryDate;
+    private LocalDate orderDate;
+    private LocalDate deliveryDate;
     private double deliveryCharge;
+
+    private boolean canceled;
     private boolean shipped;
     private boolean complete;
 
@@ -31,10 +34,11 @@ public class Order {
     public Order() {
     }
 
-    public Order(Date orderDate, Date deliveryDate, double deliveryCharge, boolean shipped, boolean complete, String orderSummeryUrl, List<Item> items, User user) {
+    public Order(LocalDate orderDate, LocalDate deliveryDate, double deliveryCharge, boolean canceled, boolean shipped, boolean complete, String orderSummeryUrl, List<Item> items, User user) {
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
         this.deliveryCharge = deliveryCharge;
+        this.canceled = canceled;
         this.shipped = shipped;
         this.complete = complete;
         this.orderSummeryUrl = orderSummeryUrl;
@@ -50,19 +54,19 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Date getDeliveryDate() {
+    public LocalDate getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
+    public void setDeliveryDate(LocalDate deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
@@ -72,6 +76,14 @@ public class Order {
 
     public void setDeliveryCharge(double deliveryCharge) {
         this.deliveryCharge = deliveryCharge;
+    }
+
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
     }
 
     public boolean isShipped() {
@@ -112,5 +124,22 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        String itemsString ="";
+        for (Item i:this.items){
+            itemsString += i +"\n";
+        }
+        return "Order:\n" +
+                "orderDate=" + orderDate +
+                ", deliveryDate=" + deliveryDate +
+                ", deliveryCharge=" + deliveryCharge +
+                ", canceled=" + canceled +
+                ", shipped=" + shipped +
+                ", complete=" + complete +
+                ", orderSummeryUrl='" + orderSummeryUrl + '\'' + "\n\n"+
+                ", items:\n" + itemsString;
     }
 }

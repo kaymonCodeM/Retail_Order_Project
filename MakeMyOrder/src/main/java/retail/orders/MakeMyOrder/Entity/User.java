@@ -27,7 +27,7 @@ public class User {
     private Address address;
 
     @OneToMany(mappedBy = "user")
-    private List<Order> orders;
+     private List<Order> orders;
 
     public User() {
     }
@@ -113,5 +113,18 @@ public class User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    @Override
+    public String toString() {
+        return "User:\n" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", roles='" + roles + '\'' + "\n\n" +
+                ", " + payments + "\n\n" +
+                ", " + contact + "\n\n" +
+                ", " + address + "\n\n" +
+                ", " + orders;
     }
 }
