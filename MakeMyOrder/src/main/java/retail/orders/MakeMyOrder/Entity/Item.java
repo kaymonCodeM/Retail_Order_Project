@@ -1,6 +1,9 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,13 +25,14 @@ public class Item {
     private double weight;
 
     @ManyToMany(mappedBy = "items")
+    @Value("${new java.util.ArrayList()}")
     private List<Order> orders;
 
 
     public Item() {
     }
 
-    public Item(String name, String type, String imageUrl, String description, int quantity, double price, String size, double weight, List<Order> orders) {
+    public Item(String name, String type, String imageUrl, String description, int quantity, double price, String size, double weight) {
         this.name = name;
         this.type = type;
         this.imageUrl = imageUrl;
@@ -37,7 +41,6 @@ public class Item {
         this.price = price;
         this.size = size;
         this.weight = weight;
-        this.orders = orders;
     }
 
     public String getSize() {

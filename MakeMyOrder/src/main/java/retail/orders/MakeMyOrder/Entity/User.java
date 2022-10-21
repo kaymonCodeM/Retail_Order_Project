@@ -1,5 +1,7 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,10 +13,12 @@ public class User {
     private long userId;
     private String username;
     private String password;
+    @Value("${true}")
     private boolean active;
     private String roles;
 
     @OneToMany(mappedBy = "user")
+    @Value("${new java.util.ArrayList()}")
     private List<Payment> payments;
 
 
@@ -27,20 +31,18 @@ public class User {
     private Address address;
 
     @OneToMany(mappedBy = "user")
-     private List<Order> orders;
+    @Value("${new java.util.ArrayList()}")
+    private List<Order> orders;
 
     public User() {
     }
 
-    public User(String username, String password, String roles, List<Payment> payments, Contact contact, Address address, List<Order> orders) {
+    public User(String username, String password, String roles, Contact contact, Address address) {
         this.username = username;
         this.password = password;
-        this.active = true;
         this.roles = roles;
-        this.payments = payments;
         this.contact = contact;
         this.address = address;
-        this.orders = orders;
     }
 
     public List<Payment> getPayments() {

@@ -91,20 +91,20 @@ public class OrderServiceImp implements OrderService{
         }
 
         Order newOrder = new Order(LocalDate.now(),null,calculateDeliveryCharge(items.keySet()),false,false,false,"",new ArrayList<>(items.keySet()),user);
-        Order saveOrder = orderRepository.save(newOrder);
 
-        String orderUrl = uploadOrderFile(user,items,contact,address,payment,saveOrder.getOrderId());
-        saveOrder.setOrderSummeryUrl(orderUrl);
 
-        saveOrder.setUser(user);
-        user.getOrders().add(saveOrder);
+        String orderUrl = uploadOrderFile(user,items,contact,address,payment,newOrder.getOrderId());
+        newOrder.setOrderSummeryUrl(orderUrl);
+
+        newOrder.setUser(user);
+        user.getOrders().add(newOrder);
 
         userRepository.save(user);
 
         String subject = "ORDER from: " + user.getUsername();
         System.out.println(emailOrderDetails(subject,orderUrl));
 
-        return orderRepository.save(saveOrder);
+        return orderRepository.save(newOrder);
     }
 
     @Override

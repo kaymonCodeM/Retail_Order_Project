@@ -58,7 +58,7 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
 
             //String passwordEncode = passwordEncoder.encode(password);
 
-            User user = new User(username,password,roles,new ArrayList<>(),saveContact,saveAddress,new ArrayList<>());
+            User user = new User(username,password,roles,saveContact,saveAddress);
 
             saveAddress.setUser(user);
             saveContact.setUser(user);

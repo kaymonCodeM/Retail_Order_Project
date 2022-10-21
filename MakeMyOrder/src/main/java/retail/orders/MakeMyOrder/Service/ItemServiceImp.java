@@ -33,8 +33,7 @@ public class ItemServiceImp implements ItemService{
     }
 
     @Override
-    public Item addItem(String name,String type, String imageUrl, String description, int quantity, double price,String size,double weight) {
-        Item item = new Item(name,type,imageUrl,description,quantity,price,size,weight,new ArrayList<>());
+    public Item addItem(Item item) {
         return itemRepository.save(item);
     }
 
