@@ -1,4 +1,4 @@
-ORDER: 39
+ORDER: 5
 from: Hannah
 
 User Information:
@@ -16,26 +16,29 @@ state: NE
 zip: 54641
 
 Payment:
-card holder: Kaymon
+cardholder: Kaymon
 card number: 655118151514
+expiration date: 2023-05-24
+cvv: 541
+zip: 6261511
 
 List of Items:
-Item: Orange
-Item ID: 1
-type: produce
-size: 1x2
-weight: 0.5
-quantity: 1
-cost: $ 1.25
-
 Item: Can
-Item ID: 2
+Item ID: 1
 type: product
 size: 1x2
 weight: 2.1
+quantity: 1
+cost: $ 2.25
+
+Item: Block
+Item ID: 2
+type: chain
+size: 12x8
+weight: 20.0
 quantity: 2
-cost: $ 4.50
+cost: $ 10.50
 
-delivery charge: $ 0.63
+delivery charge: $ 6.00
 
-total: $ 6.38
+total: $ 18.75

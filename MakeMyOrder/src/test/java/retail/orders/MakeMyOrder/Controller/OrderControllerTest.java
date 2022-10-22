@@ -39,7 +39,7 @@ class OrderControllerTest {
         Contact contact = new Contact("Kaymon","McCain","jhskfjh@snfk.con","251512124");
         Payment payment = new Payment("Kaymon","655118151514",LocalDate.of(2023,05,24) ,541,"6261511");
 
-        User user = myUserDetailsService.getUserById(1);
+        User user = myUserDetailsService.getUserById(3);
         Order order = new Order(payment,contact,address,transactions,user);
 
         Order result = orderController.addOrder(order);

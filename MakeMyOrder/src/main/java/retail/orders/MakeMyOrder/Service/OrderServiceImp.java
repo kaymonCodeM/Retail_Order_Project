@@ -107,7 +107,7 @@ public class OrderServiceImp implements OrderService{
         }catch (Exception e){
             return "File was not created";
         }
-        return "file was successfully created";
+        return filePath;
     }
 
     private User validateUser(long userId){
@@ -149,11 +149,11 @@ public class OrderServiceImp implements OrderService{
         order.setAddress(saveAddress);
         order.setContact(saveContact);
 
-        order.setOrderSummeryUrl(FILE_ORDER_URL +order.getUser().getUsername()+"/order"+ order.getOrderId()+ ".txt");
-
         Order saveOrder = orderRepository.save(order);
+        order.setOrderSummeryUrl(uploadOrderFile(saveOrder));
 
-        System.out.println(uploadOrderFile(saveOrder));
+        Order reSavedOrder = orderRepository.save(saveOrder);
+
 
         for (Transaction transaction: order.getTransactions()){
 
@@ -162,7 +162,7 @@ public class OrderServiceImp implements OrderService{
             Item saveItem = itemRepository.save(item);
 
             transaction.setItem(saveItem);
-            transaction.setOrder(saveOrder);
+            transaction.setOrder(reSavedOrder);
             transactionRepository.save(transaction);
         }
 
@@ -170,7 +170,7 @@ public class OrderServiceImp implements OrderService{
         //orderRequest.setSubject("ORDER Request from: " + order.getUser().getUsername());
         //System.out.println(emailOrderDetails(orderRequest.getSubject(),orderUrl));
 
-        return saveOrder;
+        return reSavedOrder;
     }
 
     @Override

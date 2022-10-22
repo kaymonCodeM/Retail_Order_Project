@@ -18,7 +18,7 @@ class UserControllerTest {
 
     @Test
     void testAddUser(){
-        User user = new User("Kaymon","pass","ROLE_USER");
+        User user = new User("Hannah","pass","ROLE_USER");
         User result =  userController.addUser(user);
         assertNotNull(result,"Test to add User failed");
     }
