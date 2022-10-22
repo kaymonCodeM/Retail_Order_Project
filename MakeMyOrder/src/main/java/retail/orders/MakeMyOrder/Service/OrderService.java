@@ -20,7 +20,17 @@ public interface OrderService {
 
     String setShippedById(long orderId);
 
-    String setDeliveredById(long orderId, LocalDate deliveredDate);
+    String setDeliveredById(long orderId);
 
     Order updateOrder(Order Order);
+
+    Address findAddressByOrderId(long orderId);
+    Contact findContactByOrderId(long orderId);
+    Payment findPaymentByOrderId(long orderId);
+
+    User findUserByOrderId(long orderId);
+
+    List<Transaction> findTransactionsByOrderId(long orderId);
+
+    List<Transaction> findAllTransactions();
 }

@@ -105,9 +105,9 @@ public class OrderServiceImp implements OrderService{
             filePath +="order"+ order.getOrderId()+ ".txt";
             Files.writeString(Path.of(filePath),content);
         }catch (Exception e){
-            return "File was not created successfully";
+            return "File was not created";
         }
-        return filePath;
+        return "file was successfully created";
     }
 
     private User validateUser(long userId){
@@ -149,13 +149,11 @@ public class OrderServiceImp implements OrderService{
         order.setAddress(saveAddress);
         order.setContact(saveContact);
 
+        order.setOrderSummeryUrl(FILE_ORDER_URL +order.getUser().getUsername()+"/order"+ order.getOrderId()+ ".txt");
 
         Order saveOrder = orderRepository.save(order);
 
-        String orderUrl = uploadOrderFile(saveOrder);
-        saveOrder.setOrderSummeryUrl(orderUrl);
-
-        Order reSavedOrder = orderRepository.save(saveOrder);
+        System.out.println(uploadOrderFile(saveOrder));
 
         for (Transaction transaction: order.getTransactions()){
 
@@ -164,7 +162,7 @@ public class OrderServiceImp implements OrderService{
             Item saveItem = itemRepository.save(item);
 
             transaction.setItem(saveItem);
-            transaction.setOrder(reSavedOrder);
+            transaction.setOrder(saveOrder);
             transactionRepository.save(transaction);
         }
 
@@ -172,7 +170,7 @@ public class OrderServiceImp implements OrderService{
         //orderRequest.setSubject("ORDER Request from: " + order.getUser().getUsername());
         //System.out.println(emailOrderDetails(orderRequest.getSubject(),orderUrl));
 
-        return reSavedOrder;
+        return saveOrder;
     }
 
     @Override
@@ -197,10 +195,25 @@ public class OrderServiceImp implements OrderService{
 
     @Override
     public String deleteOrderById(long orderId) {
+        Order order = findOrderById(orderId);
+
+        if(order==null){
+            return "ERROR: order was not found";
+        }
+
+        Address address = order.getAddress();
+        Contact contact = order.getContact();
+        Payment payment = order.getPayment();
+
         for (Transaction transaction: transactionRepository.findTransactionsByOrderId(orderId)){
             transactionRepository.delete(transaction);
         }
-        orderRepository.deleteById(orderId);
+
+        orderRepository.delete(order);
+        addressRepository.delete(address);
+        contactRepository.delete(contact);
+        paymentRepository.delete(payment);
+
         return "Delete Order Successful";
     }
 
@@ -213,9 +226,9 @@ public class OrderServiceImp implements OrderService{
     }
 
     @Override
-    public String setDeliveredById(long orderId, LocalDate deliveredDate) {
+    public String setDeliveredById(long orderId) {
         Order order = findOrderById(orderId);
-        order.setDeliveryDate(deliveredDate);
+        order.setDeliveryDate(LocalDate.now());
         order.setComplete(true);
         orderRepository.save(order);
         return "Order is now complete";
@@ -224,7 +237,8 @@ public class OrderServiceImp implements OrderService{
     @Override
     public Order updateOrder(Order order) {
 
-        if(!order.isShipped()) {
+        if(!findOrderById(order.getOrderId()).isShipped()) {
+
             for (Transaction transaction: transactionRepository.findTransactionsByOrderId(order.getOrderId())){
                 Item item = transaction.getItem();
                 item.setQuantity(item.getQuantity()+transaction.getQuantity());
@@ -233,11 +247,44 @@ public class OrderServiceImp implements OrderService{
                 transaction.setItem(saveItem);
                 transactionRepository.delete(transaction);
             }
+
+
         }else {
             return null;
         }
 
         return saveOrder(order);
     }
+
+    @Override
+    public Address findAddressByOrderId(long orderId) {
+        return findOrderById(orderId).getAddress();
+    }
+
+    @Override
+    public Contact findContactByOrderId(long orderId) {
+        return findOrderById(orderId).getContact();
+    }
+
+    @Override
+    public Payment findPaymentByOrderId(long orderId) {
+        return findOrderById(orderId).getPayment();
+    }
+
+    @Override
+    public User findUserByOrderId(long orderId) {
+        return findOrderById(orderId).getUser();
+    }
+
+    @Override
+    public List<Transaction> findTransactionsByOrderId(long orderId) {
+        return transactionRepository.findTransactionsByOrderId(orderId);
+    }
+
+    @Override
+    public List<Transaction> findAllTransactions() {
+        return transactionRepository.findAll();
+    }
+
 
 }
