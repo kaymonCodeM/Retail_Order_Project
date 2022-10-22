@@ -2,10 +2,14 @@ package retail.orders.MakeMyOrder.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import retail.orders.MakeMyOrder.Componets.OrderRequest;
+import retail.orders.MakeMyOrder.Componets.UpdateOrderRequest;
 import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Repository.OrderRepository;
+import retail.orders.MakeMyOrder.Repository.TransactionRepository;
 import retail.orders.MakeMyOrder.Repository.UserRepository;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,8 +20,8 @@ import java.util.*;
 @Service
 public class OrderServiceImp implements OrderService{
 
-    @Autowired
-    private EmailSenderService emailSenderService;
+    //@Autowired
+    //private EmailSenderService emailSenderService;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -25,54 +29,88 @@ public class OrderServiceImp implements OrderService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private TransactionRepository transactionRepository;
+
     private final String FILE_ORDER_URL = "MakeMyOrder/src/main/resources/RetailOrders/";
 
 
 
-    private double calculateDeliveryCharge(Set<Item> items){
-        double result = 0.0;
-        for (Item i:items){
-            result += i.getWeight() *.05;
-        }
-        return result;
+    private double calculateDeliveryCharge(Item item,int quantity){
+        return item.getWeight() *.15 * quantity;
     }
 
-    private String uploadOrderFile(User user, Map<Item,Integer> items, Contact contact, Address address, Payment payment,long orderId){
+    private String uploadOrderFile(Contact contact, Address address, Payment payment,Order order){
 
-        String filePath = FILE_ORDER_URL+user.getUsername()+"/"+orderId;
+        String filePath = FILE_ORDER_URL +order.getUser().getUsername()+"/";
+        double totalCost = 0.0;
 
-        String content = "ORDER: " + orderId + "\n";
-        content += "from: " + user.getUsername() +"\n\n";
+        String content = "ORDER: " + order.getOrderId() + "\n";
+        content += "from: " + order.getUser().getUsername() +"\n\n";
 
-        for (Item item: items.keySet()){
-            content += item +"\n" + "quantity: "+ items.get(item);
+        content+= "User Information:\n";
+        content += "Contact:\n"
+                + "firstname: " + contact.getFirstname() + "\n"
+                + "lastname: " + contact.getLastname() + "\n"
+                + "email: " +contact.getEmail() +"\n"
+                + "phone number: " + contact.getPhoneNumber() + "\n\n";
+        content += "Address:\n"
+                + "street address: " + address.getStreetAddress() + "\n"
+                + "country: " + address.getCountry() + "\n"
+                + "city: " + address.getCity() + "\n"
+                + "state: " + address.getState() + "\n"
+                + "zip: " + address.getZip() + "\n\n";
+        content += "Payment:\n"
+                + "card holder: " + payment.getCardHolder() + "\n"
+                + "card number: " + payment.getCardNumber() + "\n\n";
+
+
+        content += "List of Items:\n";
+        double deliveryCost = 0.0;
+        for (Transaction transaction: order.getTransactions()){
+
+            Item item = transaction.getItem();
+            double itemCost = item.getPrice()*transaction.getQuantity();
+            totalCost += itemCost;
+            content +="Item: "+ item.getName() +"\n"
+                    + "type: " + item.getType() + "\n"
+                    + "size: " + item.getSize() + "\n"
+                    + "weight: " + item.getWeight() + "\n"
+                    + "quantity: " + transaction.getQuantity() + "\n"
+                    + "cost: " + String.format("$ %.2f",itemCost)
+                    +"\n\n";
+
+            transaction.setOrder(order);
+
+            deliveryCost = calculateDeliveryCharge(item,transaction.getQuantity());
         }
 
-        content += contact+"\n\n";
-        content += address +"\n\n";
-        content += payment;
+        totalCost += deliveryCost;
+        content += "delivery charge: " + String.format("$ %.2f",deliveryCost) +"\n\n";
+        content += "total: " + String.format("$ %.2f",totalCost);
+
+        order.setTotalCost(totalCost);
 
 
         try {
-            Files.write(
-                    Paths.get(filePath),
-                    content.getBytes(),
-                    StandardOpenOption.APPEND);
+            Files.createDirectories(Path.of(filePath));
+            filePath +="order"+ order.getOrderId()+ ".txt";
+            Files.writeString(Path.of(filePath),content);
         }catch (Exception e){
             return "File was not created successfully";
         }
         return filePath;
     }
 
-    private String emailOrderDetails(String subject,String orderUrl){
-        try {
-            String body = Files.readString(Path.of(orderUrl));
-            System.out.println(emailSenderService.sendEmail(subject,body));
-        }catch (Exception e){
-            return "ERROR email order was not successful";
-        }
-        return "Email order details successfully";
-    }
+//    private String emailOrderDetails(String subject,String orderUrl){
+//        try {
+//            String body = Files.readString(Path.of(orderUrl));
+//            System.out.println(emailSenderService.sendEmail(subject,body));
+//        }catch (Exception e){
+//            return "ERROR email order was not successful";
+//        }
+//        return "Email order details successfully";
+//    }
 
 
     @Override
@@ -81,36 +119,36 @@ public class OrderServiceImp implements OrderService{
     }
 
     @Override
-    public Order addOrder(long userId, Map<Item,Integer> items, Contact contact, Address address, Payment payment) {
+    public Order addOrder(OrderRequest orderRequest) {
         User user;
-        Optional<User> u = userRepository.findById(userId);
+        Optional<User> u = userRepository.findById(orderRequest.getUserId());
         if(u.isPresent()){
             user = u.get();
         }else {
-            throw new RuntimeException("User was not found by Id: " + userId);
+            throw new RuntimeException("User was not found by Id: " + orderRequest.getUserId());
         }
 
-        Order newOrder = new Order(LocalDate.now(),null,calculateDeliveryCharge(items.keySet()),false,false,false,"",new ArrayList<>(items.keySet()),user);
+        Order newOrder = new Order(LocalDate.now(),orderRequest.getTransactions(),user);
+
+        Order saveOrder = orderRepository.save(newOrder);
+        String orderUrl = uploadOrderFile(orderRequest.getContact(),orderRequest.getAddress(),orderRequest.getPayment(),saveOrder);
+        saveOrder.setOrderSummeryUrl(orderUrl);
+
+        for (Transaction transaction: orderRequest.getTransactions()){
+            transaction.setOrder(saveOrder);
+        }
 
 
-        String orderUrl = uploadOrderFile(user,items,contact,address,payment,newOrder.getOrderId());
-        newOrder.setOrderSummeryUrl(orderUrl);
+        //String subject = "ORDER from: " + user.getUsername();
+        //System.out.println(emailOrderDetails(subject,orderUrl));
 
-        newOrder.setUser(user);
-        user.getOrders().add(newOrder);
-
-        userRepository.save(user);
-
-        String subject = "ORDER from: " + user.getUsername();
-        System.out.println(emailOrderDetails(subject,orderUrl));
-
-        return orderRepository.save(newOrder);
+        return orderRepository.save(saveOrder);
     }
 
     @Override
     public String cancelOrderById(long orderId) {
         Order order = findOrderById(orderId);
-        System.out.println(emailOrderDetails("Cancel Order Request from: " + order.getUser().getUsername(),order.getOrderSummeryUrl()));
+        //System.out.println(emailOrderDetails("Cancel Order Request from: " + order.getUser().getUsername(),order.getOrderSummeryUrl()));
         if(order.isShipped()){
             return "Order already shipped";
         }
@@ -134,11 +172,11 @@ public class OrderServiceImp implements OrderService{
     @Override
     public String deleteOrderById(long orderId) {
         Order order = findOrderById(orderId);
-        try {
-            Files.delete(Path.of(order.getOrderSummeryUrl()));
-        }catch (Exception e){
-            System.out.println("File was not found: " +order.getOrderSummeryUrl());
+        for (Transaction transaction: order.getTransactions()){
+            transactionRepository.delete(transaction);
         }
+        order.getTransactions().clear();
+
         order.getUser().getOrders().remove(order);
         userRepository.save(order.getUser());
         orderRepository.delete(order);
@@ -161,4 +199,35 @@ public class OrderServiceImp implements OrderService{
         orderRepository.save(order);
         return "Order is now complete";
     }
+
+    @Override
+    public String updateOrder(UpdateOrderRequest updateOrderRequest) {
+
+        Order order = findOrderById(updateOrderRequest.getOrderId());
+
+        if(!order.isShipped()) {
+
+            for (Transaction transaction: order.getTransactions()){
+                transactionRepository.delete(transaction);
+            }
+            for (Transaction transaction: updateOrderRequest.getTransactions()){
+                transaction.setOrder(order);
+                transactionRepository.save(transaction);
+            }
+
+            order.getTransactions().clear();
+            order.setTransactions(updateOrderRequest.getTransactions());
+
+            String orderUrl = uploadOrderFile(updateOrderRequest.getContact(), updateOrderRequest.getAddress(), updateOrderRequest.getPayment(), order);
+
+//            String subject = "UPDATE ORDER from: " + order.getUser();
+//            System.out.println(emailOrderDetails(subject, orderUrl));
+            orderRepository.save(order);
+        }else {
+            return "Error: Order has already been shipped";
+        }
+
+        return "Successfully updated order";
+    }
+
 }

@@ -1,10 +1,9 @@
 package retail.orders.MakeMyOrder.Entity;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "tbl_item")
@@ -24,9 +23,8 @@ public class Item {
 
     private double weight;
 
-    @ManyToMany(mappedBy = "items")
-    @Value("${new java.util.ArrayList()}")
-    private List<Order> orders;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "item")
+    private Set<Transaction> transactions;
 
 
     public Item() {
@@ -115,23 +113,27 @@ public class Item {
         this.price = price;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public Set<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     @Override
     public String toString() {
-        return "Item:\n" +
-                "name='" + name + '\'' +
+        return "Item{" +
+                "itemId=" + itemId +
+                ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", description='" + description + '\'' +
                 ", quantity=" + quantity +
-                ", price=$" + price +
+                ", price=" + price +
                 ", size='" + size + '\'' +
-                ", weight=" + weight + "\n" +
-                ", description: " + description;
+                ", weight=" + weight +
+                ", transactions=" + transactions +
+                '}';
     }
 }

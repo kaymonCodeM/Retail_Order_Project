@@ -18,6 +18,14 @@ public class Address {
     @OneToOne(mappedBy = "address")
     private User user;
 
+    public Address(String streetAddress, String country, String city, String state, String zip) {
+        this.streetAddress = streetAddress;
+        Country = country;
+        this.city = city;
+        State = state;
+        this.zip = zip;
+    }
+
     public Address() {
     }
 
@@ -79,11 +87,14 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address:\n" +
-                "streetAddress='" + streetAddress + '\'' +
+        return "Address{" +
+                "addressId=" + addressId +
+                ", streetAddress='" + streetAddress + '\'' +
                 ", Country='" + Country + '\'' +
                 ", city='" + city + '\'' +
                 ", State='" + State + '\'' +
-                ", zip='" + zip + '\'';
+                ", zip='" + zip + '\'' +
+                ", user=" + user +
+                '}';
     }
 }

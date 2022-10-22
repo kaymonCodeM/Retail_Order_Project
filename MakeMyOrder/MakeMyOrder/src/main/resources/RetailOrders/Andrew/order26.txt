@@ -1,0 +1,39 @@
+ORDER: 26
+from: Andrew
+
+User Information:
+Contact:
+firstname: Kaymon
+lastname: McCain
+email: jhskfjh@snfk.con
+phone number: 251512124
+
+Address:
+street address: 741 M ST
+country: NE
+city: Lincoln
+state: NE
+zip: 54641
+
+Payment:
+card holder: Kaymon
+card number: 655118151514
+
+List of Items:
+Item: Can
+type: product
+size: 1x2
+weight: 2.1
+quantity: 2
+cost: $ 4.50
+
+Item: Orange
+type: produce
+size: 1x2
+weight: 0.5
+quantity: 1
+cost: $ 1.25
+
+delivery charge: $ 0.08
+
+total: $ 5.83

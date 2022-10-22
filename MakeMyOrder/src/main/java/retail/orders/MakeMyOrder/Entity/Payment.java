@@ -1,6 +1,7 @@
 package retail.orders.MakeMyOrder.Entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class Payment {
     private long paymentId;
 
     private String cardHolder;
-    private long cardNumber;
-    private Date expirationDate;
+    private String cardNumber;
+    private LocalDate expirationDate;
     private int cvv;
     private String zip;
 
@@ -23,6 +24,14 @@ public class Payment {
     private User user;
 
     public Payment() {
+    }
+
+    public Payment(String cardHolder, String cardNumber, LocalDate expirationDate, int cvv, String zip) {
+        this.cardHolder = cardHolder;
+        this.cardNumber = cardNumber;
+        this.expirationDate = expirationDate;
+        this.cvv = cvv;
+        this.zip = zip;
     }
 
     public String getCardHolder() {
@@ -41,19 +50,19 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public long getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(long cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
-    public Date getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
 
@@ -83,11 +92,14 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment:\n" +
-                "cardHolder='" + cardHolder + '\'' +
+        return "Payment{" +
+                "paymentId=" + paymentId +
+                ", cardHolder='" + cardHolder + '\'' +
                 ", cardNumber=" + cardNumber +
                 ", expirationDate=" + expirationDate +
                 ", cvv=" + cvv +
-                ", zip='" + zip + '\'';
+                ", zip='" + zip + '\'' +
+                ", user=" + user +
+                '}';
     }
 }

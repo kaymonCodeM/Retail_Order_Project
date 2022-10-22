@@ -3,7 +3,9 @@ package retail.orders.MakeMyOrder.Entity;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_user")
@@ -13,13 +15,12 @@ public class User {
     private long userId;
     private String username;
     private String password;
-    @Value("${true}")
-    private boolean active;
+    private boolean active = true;
     private String roles;
 
-    @OneToMany(mappedBy = "user")
-    @Value("${new java.util.ArrayList()}")
-    private List<Payment> payments;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    @Value("#{new java.util.ArrayList()}")
+    private Set<Payment> payments;
 
 
     @OneToOne
@@ -30,9 +31,9 @@ public class User {
     @JoinColumn(name = "addressId")
     private Address address;
 
-    @OneToMany(mappedBy = "user")
-    @Value("${new java.util.ArrayList()}")
-    private List<Order> orders;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    @Value("#{new java.util.ArrayList()}")
+    private Set<Order> orders;
 
     public User() {
     }
@@ -43,14 +44,6 @@ public class User {
         this.roles = roles;
         this.contact = contact;
         this.address = address;
-    }
-
-    public List<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
     }
 
     public long getUserId() {
@@ -109,24 +102,34 @@ public class User {
         this.address = address;
     }
 
-    public List<Order> getOrders() {
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
+
+    public Set<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
 
     @Override
     public String toString() {
-        return "User:\n" +
-                "username='" + username + '\'' +
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", active=" + active +
-                ", roles='" + roles + '\'' + "\n\n" +
-                ", " + payments + "\n\n" +
-                ", " + contact + "\n\n" +
-                ", " + address + "\n\n" +
-                ", " + orders;
+                ", roles='" + roles + '\'' +
+                ", payments=" + payments +
+                ", contact=" + contact +
+                ", address=" + address +
+                ", orders=" + orders +
+                '}';
     }
 }

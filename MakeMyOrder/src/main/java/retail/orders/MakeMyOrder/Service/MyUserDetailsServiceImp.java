@@ -25,6 +25,9 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     @Autowired
     private PaymentRepository paymentRepository;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
 
     //private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -111,15 +114,17 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
             for (Payment payment: user.getPayments()){
                 paymentRepository.delete(payment);
             }
-
             user.getPayments().clear();
 
+            for(Order order: user.getOrders()){
+                orderRepository.delete(order);
+            }
             user.getOrders().clear();
+
+            this.userRepository.delete(user);
 
             addressRepository.delete(user.getAddress());
             contactRepository.delete(user.getContact());
-
-            this.userRepository.delete(user);
         }else {
             return "User is not found id: " +userId;
         }

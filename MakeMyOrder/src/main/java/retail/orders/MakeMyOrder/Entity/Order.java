@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_order")
@@ -14,18 +15,23 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderId;
     private LocalDate orderDate;
-    private LocalDate deliveryDate;
-    private double deliveryCharge;
 
+    @Value("#{null}")
+    private LocalDate deliveryDate;
+
+    @Value("#{false}")
     private boolean canceled;
+    @Value("#{false}")
     private boolean shipped;
+    @Value("#{false}")
     private boolean complete;
 
     private String orderSummeryUrl;
 
-    @ManyToMany
-    @JoinTable(name = "items",joinColumns = @JoinColumn(name = "orderId"),inverseJoinColumns = @JoinColumn(name = "itemId"))
-    private List<Item> items;
+    private double totalCost;
+
+    @OneToMany(cascade=CascadeType.MERGE,fetch = FetchType.EAGER,mappedBy = "order")
+    private Set<Transaction> transactions;
 
     @ManyToOne
     @JoinColumn(name = "userId")
@@ -34,15 +40,9 @@ public class Order {
     public Order() {
     }
 
-    public Order(LocalDate orderDate, LocalDate deliveryDate, double deliveryCharge, boolean canceled, boolean shipped, boolean complete, String orderSummeryUrl, List<Item> items, User user) {
+    public Order(LocalDate orderDate, Set<Transaction> transactions, User user) {
         this.orderDate = orderDate;
-        this.deliveryDate = deliveryDate;
-        this.deliveryCharge = deliveryCharge;
-        this.canceled = canceled;
-        this.shipped = shipped;
-        this.complete = complete;
-        this.orderSummeryUrl = orderSummeryUrl;
-        this.items = items;
+        this.transactions = transactions;
         this.user = user;
     }
 
@@ -70,13 +70,6 @@ public class Order {
         this.deliveryDate = deliveryDate;
     }
 
-    public double getDeliveryCharge() {
-        return deliveryCharge;
-    }
-
-    public void setDeliveryCharge(double deliveryCharge) {
-        this.deliveryCharge = deliveryCharge;
-    }
 
     public boolean isCanceled() {
         return canceled;
@@ -110,12 +103,20 @@ public class Order {
         this.orderSummeryUrl = orderSummeryUrl;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public double getTotalCost() {
+        return totalCost;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
     public User getUser() {
@@ -128,18 +129,16 @@ public class Order {
 
     @Override
     public String toString() {
-        String itemsString ="";
-        for (Item i:this.items){
-            itemsString += i +"\n";
-        }
-        return "Order:\n" +
-                "orderDate=" + orderDate +
+        return "Order{" +
+                "orderId=" + orderId +
+                ", orderDate=" + orderDate +
                 ", deliveryDate=" + deliveryDate +
-                ", deliveryCharge=" + deliveryCharge +
                 ", canceled=" + canceled +
                 ", shipped=" + shipped +
                 ", complete=" + complete +
-                ", orderSummeryUrl='" + orderSummeryUrl + '\'' + "\n\n"+
-                ", items:\n" + itemsString;
+                ", orderSummeryUrl='" + orderSummeryUrl + '\'' +
+                ", transactions=" + transactions +
+                ", user=" + user +
+                '}';
     }
 }

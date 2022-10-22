@@ -3,10 +3,10 @@ package retail.orders.MakeMyOrder.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.Item;
+import retail.orders.MakeMyOrder.Entity.Transaction;
 import retail.orders.MakeMyOrder.Repository.ItemRepository;
-import retail.orders.MakeMyOrder.Repository.OrderRepository;
+import retail.orders.MakeMyOrder.Repository.TransactionRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +15,9 @@ public class ItemServiceImp implements ItemService{
 
     @Autowired
     private ItemRepository itemRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
 
 
     @Override
@@ -44,7 +47,11 @@ public class ItemServiceImp implements ItemService{
 
     @Override
     public String removeItemById(long itemId) {
-        itemRepository.deleteById(itemId);
+        Item item = getItemById(itemId);
+        for(Transaction transaction: item.getTransactions()){
+            transactionRepository.delete(transaction);
+        }
+        itemRepository.delete(item);
         return "Deleted item by id: " + itemId;
     }
 }
