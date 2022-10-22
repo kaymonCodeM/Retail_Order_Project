@@ -15,8 +15,11 @@ class ItemControllerTest {
 
     @Test
     void addItem(){
-        Item item = new Item("Can","product","/product","What a can",5,2.25,"1x2",2.1);
-        Item test = itemController.addItem(item);
-        assertNotNull(test, "Add Item Failed");
+        Item item1 = new Item("Can","product","/product","What a can",5,2.25,"1x2",2.1);
+        Item item2 = new Item("Block","chain","/chain","This blokc it nice to sit on",8,5.25,"12x8",20);
+        Item test1 = itemController.addItem(item1);
+        Item test2 = itemController.addItem(item2);
+        assertNotNull(test1, "Add Item Failed");
+        assertNotNull(test2, "Add Item Failed");
     }
 }

@@ -30,6 +30,19 @@ public class Order {
 
     private double totalCost;
 
+    @OneToOne
+    @JoinColumn(name = "paymentId")
+    private Payment payment;
+
+
+    @OneToOne
+    @JoinColumn(name = "contactId")
+    private Contact contact;
+
+    @OneToOne
+    @JoinColumn(name = "addressId")
+    private Address address;
+
     @OneToMany(mappedBy = "order")
     private List<Transaction> transactions;
 
@@ -40,8 +53,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(LocalDate orderDate, List<Transaction> transactions, User user) {
-        this.orderDate = orderDate;
+    public Order(Payment payment, Contact contact, Address address, List<Transaction> transactions, User user) {
+        this.payment = payment;
+        this.contact = contact;
+        this.address = address;
         this.transactions = transactions;
         this.user = user;
     }
@@ -69,7 +84,6 @@ public class Order {
     public void setDeliveryDate(LocalDate deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
-
 
     public boolean isCanceled() {
         return canceled;
@@ -111,6 +125,30 @@ public class Order {
         this.totalCost = totalCost;
     }
 
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public List<Transaction> getTransactions() {
         return transactions;
     }
@@ -125,20 +163,5 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", orderDate=" + orderDate +
-                ", deliveryDate=" + deliveryDate +
-                ", canceled=" + canceled +
-                ", shipped=" + shipped +
-                ", complete=" + complete +
-                ", orderSummeryUrl='" + orderSummeryUrl + '\'' +
-                ", transactions=" + transactions +
-                ", user=" + user +
-                '}';
     }
 }

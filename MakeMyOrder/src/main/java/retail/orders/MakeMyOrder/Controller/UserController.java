@@ -12,8 +12,8 @@ public class UserController {
     private MyUserDetailsService myUserDetailsService;
 
     @PostMapping("/newUser")
-    String addUser(@RequestParam String username,@RequestParam String password, @RequestParam String roles){
-        return myUserDetailsService.addUser(username,password,roles);
+    User addUser(@RequestBody User user){
+        return myUserDetailsService.addUser(user);
     }
 
     @DeleteMapping("/deleteUser/{userID}")

@@ -6,6 +6,7 @@ import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Repository.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -13,22 +14,6 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private AddressRepository addressRepository;
-
-
-    @Autowired
-    private ContactRepository contactRepository;
-
-    @Autowired
-    private PaymentRepository paymentRepository;
-
-    @Autowired
-    private OrderRepository orderRepository;
-
-    @Autowired
-    private TransactionRepository transactionRepository;
 
 
     //private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -42,94 +27,41 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     @Override
     public User getUserByUsername(String username) {
         Optional<User> user = this.userRepository.findByUsername(username);
-        if(user.isPresent()){
-            return user.get();
-        }else {
-            throw new RuntimeException("Username not found: " + username);
-        }
+        return user.orElse(null);
     }
 
     @Override
-    public String addUser(String username,String password, String roles) {
-        Optional<User> innerUser = userRepository.findByUsername(username);
-        if(innerUser.isEmpty()) {
-
-            Address address = new Address();
-            Contact contact = new Contact();
-
-
-            Address saveAddress = addressRepository.save(address);
-            Contact saveContact = contactRepository.save(contact);
-
-            //String passwordEncode = passwordEncoder.encode(password);
-
-            User user = new User(username,password,roles,saveContact,saveAddress);
-
-            userRepository.save(user);
-        }else{
-            return "User is already in the system";
+    public User addUser(User user) {
+        Optional<User> u = userRepository.findByUsername(user.getUsername());
+        if(u.isEmpty()){
+            return userRepository.save(user);
         }
-        return "successful new user";
+        return null;
     }
 
     @Override
-    public String updatePasswordById(long userId,String password) {
-        //String passwordEncode = passwordEncoder.encode(password);
-        Optional<User> innerUser = userRepository.findById(userId);
-        if(innerUser.isPresent()){
-            User user = innerUser.get();
-            user.setPassword(password);
-            userRepository.save(user);
-        }else {
-            return "User was not found by Id: " + userId;
+    public User updateUser(User user) {
+        User u = getUserByUsername(user.getUsername());
+        if(u==null){
+            return userRepository.save(user);
+        }else if(Objects.equals(u.getUsername(), user.getUsername())){
+            return userRepository.save(user);
         }
-        return "User password updated successfully";
+        return null;
     }
 
     @Override
-    public String updateUsernameById(long userId, String username) {
-        Optional<User> updateUser = userRepository.findByUsername(username);
-        if(updateUser.isEmpty()) {
-            Optional<User> innerUser = userRepository.findById(userId);
-            if (innerUser.isPresent()) {
-                User user = innerUser.get();
-                user.setUsername(username);
-                userRepository.save(user);
-            } else {
-                return "User was not found by Id: " + userId;
-            }
-        }else{
-            return "User is already in the system";
-        }
-        return "Username updated successfully";
+    public User getUserById(long userId) {
+        Optional<User> user = this.userRepository.findById(userId);
+        return user.orElse(null);
     }
+
 
     @Override
     public String deleteUserById(long userId) {
-        Optional<User> innerUser = userRepository.findById(userId);
-        if(innerUser.isPresent()){
-            User user = innerUser.get();
+        userRepository.deleteById(userId);
 
-            for (Payment payment : paymentRepository.findPaymentsByUserId(userId)) {
-                paymentRepository.delete(payment);
-            }
-
-
-            for (Order order : orderRepository.findOrderByUserId(userId)) {
-                for (Transaction transaction: transactionRepository.findTransactionsByOrderId(order.getOrderId())){
-                    transactionRepository.delete(transaction);
-                }
-                orderRepository.delete(order);
-            }
-
-            this.userRepository.delete(user);
-
-            addressRepository.delete(user.getAddress());
-            contactRepository.delete(user.getContact());
-        }else {
-            return "User is not found id: " +userId;
-        }
-        return "User Deleted by Id: " + userId;
+        return "User deleted successfully by Id: " + userId;
     }
 //
 //    @Override

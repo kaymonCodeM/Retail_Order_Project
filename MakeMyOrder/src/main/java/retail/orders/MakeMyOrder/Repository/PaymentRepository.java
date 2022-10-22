@@ -11,6 +11,4 @@ import java.util.Optional;
 
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment,Long> {
-    @Query(value = "SELECT * FROM tbl_payment WHERE user_id = ?1",nativeQuery = true)
-    List<Payment> findPaymentsByUserId(long userId);
 }

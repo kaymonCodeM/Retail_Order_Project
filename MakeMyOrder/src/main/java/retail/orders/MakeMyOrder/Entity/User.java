@@ -18,32 +18,17 @@ public class User {
     private boolean active = true;
     private String roles;
 
-    @OneToMany(mappedBy = "user")
-    @Value("#{new java.util.ArrayList()}")
-    private Set<Payment> payments;
-
-
-    @OneToOne
-    @JoinColumn(name = "contactId")
-    private Contact contact;
-
-    @OneToOne
-    @JoinColumn(name = "addressId")
-    private Address address;
 
     @OneToMany(mappedBy = "user")
-    @Value("#{new java.util.ArrayList()}")
-    private Set<Order> orders;
+    private List<Order> orders;
 
     public User() {
     }
 
-    public User(String username, String password, String roles, Contact contact, Address address) {
+    public User(String username, String password, String roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;
-        this.contact = contact;
-        this.address = address;
     }
 
     public long getUserId() {
@@ -86,50 +71,11 @@ public class User {
         this.roles = roles;
     }
 
-    public Contact getContact() {
-        return contact;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Set<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(Set<Payment> payments) {
-        this.payments = payments;
-    }
-
-    public Set<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", active=" + active +
-                ", roles='" + roles + '\'' +
-                ", payments=" + payments +
-                ", contact=" + contact +
-                ", address=" + address +
-                ", orders=" + orders +
-                '}';
     }
 }

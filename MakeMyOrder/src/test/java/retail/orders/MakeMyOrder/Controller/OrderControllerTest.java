@@ -3,9 +3,9 @@ package retail.orders.MakeMyOrder.Controller;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import retail.orders.MakeMyOrder.Componets.OrderRequest;
 import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Service.ItemService;
+import retail.orders.MakeMyOrder.Service.MyUserDetailsService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,6 +18,9 @@ class OrderControllerTest {
 
     @Autowired
     private OrderController orderController;
+
+    @Autowired
+    private MyUserDetailsService myUserDetailsService;
 
     @Autowired
     private ItemService itemService;
@@ -36,8 +39,11 @@ class OrderControllerTest {
         Contact contact = new Contact("Kaymon","McCain","jhskfjh@snfk.con","251512124");
         Payment payment = new Payment("Kaymon","655118151514",LocalDate.of(2023,05,24) ,541,"6261511");
 
-        OrderRequest orderRequest = new OrderRequest(5,transactions,address,contact,payment);
-        Order order = orderController.addOrder(orderRequest);
-        assertNotNull(order, "Add Order Failed");
+        User user = myUserDetailsService.getUserById(1);
+        Order order = new Order(payment,contact,address,transactions,user);
+
+        Order result = orderController.addOrder(order);
+
+        assertNotNull(result, "Add Order Failed");
     }
 }

@@ -8,11 +8,11 @@ public interface MyUserDetailsService {
 
     List<User> findAllUsers();
     User getUserByUsername(String username);
-    String addUser(String username,String password, String roles);
+    User addUser(User user);
 
-    String updatePasswordById(long userId,String password);
+    User updateUser(User user);
+    User getUserById(long userId);
 
-    String updateUsernameById(long userId,String Username);
     String deleteUserById(long userId);
     //PasswordEncoder getEncoder();
 }

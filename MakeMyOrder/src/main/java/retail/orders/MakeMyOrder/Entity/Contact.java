@@ -16,7 +16,7 @@ public class Contact {
     private String phoneNumber;
 
     @OneToOne(mappedBy = "contact")
-    private User user;
+    private Order order;
 
     public Contact() {
     }
@@ -68,23 +68,11 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    public User getUser() {
-        return user;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "contactId=" + contactId +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", user=" + user +
-                '}';
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

@@ -1,7 +1,5 @@
 package retail.orders.MakeMyOrder.Service;
 
-import retail.orders.MakeMyOrder.Componets.OrderRequest;
-import retail.orders.MakeMyOrder.Componets.UpdateOrderRequest;
 import retail.orders.MakeMyOrder.Entity.*;
 
 import java.time.LocalDate;
@@ -11,7 +9,9 @@ public interface OrderService {
 
     List<Order> findOrders();
 
-    Order addOrder(OrderRequest orderRequest);
+    List<Order> findOrdersByUserId(long userId);
+
+    Order saveOrder(Order order);
     String cancelOrderById(long order);
 
     Order findOrderById(long orderId);
@@ -22,5 +22,5 @@ public interface OrderService {
 
     String setDeliveredById(long orderId, LocalDate deliveredDate);
 
-    String updateOrder(UpdateOrderRequest updateOrderRequest);
+    Order updateOrder(Order Order);
 }

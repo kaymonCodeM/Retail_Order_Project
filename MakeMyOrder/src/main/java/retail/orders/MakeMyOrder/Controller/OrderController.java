@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import retail.orders.MakeMyOrder.Componets.OrderRequest;
 import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Service.OrderService;
 
@@ -15,7 +14,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/order/order+1")
-    Order addOrder(@RequestBody OrderRequest orderRequest){
-        return orderService.addOrder(orderRequest);
+    Order addOrder(@RequestBody Order order){
+        return orderService.saveOrder(order);
     }
 }

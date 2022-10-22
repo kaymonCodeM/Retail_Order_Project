@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import retail.orders.MakeMyOrder.Entity.User;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,8 +18,9 @@ class UserControllerTest {
 
     @Test
     void testAddUser(){
-        String s =  userController.addUser("Shawn","pass","ROLE_USER");
-        assertEquals(s,"successful new user","Test to add User failed");
+        User user = new User("Kaymon","pass","ROLE_USER");
+        User result =  userController.addUser(user);
+        assertNotNull(result,"Test to add User failed");
     }
 
     @Test

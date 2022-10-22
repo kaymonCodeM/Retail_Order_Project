@@ -16,7 +16,7 @@ public class Address {
     private String zip;
 
     @OneToOne(mappedBy = "address")
-    private User user;
+    private Order order;
 
     public Address(String streetAddress, String country, String city, String state, String zip) {
         this.streetAddress = streetAddress;
@@ -77,24 +77,11 @@ public class Address {
         this.zip = zip;
     }
 
-    public User getUser() {
-        return user;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", streetAddress='" + streetAddress + '\'' +
-                ", Country='" + Country + '\'' +
-                ", city='" + city + '\'' +
-                ", State='" + State + '\'' +
-                ", zip='" + zip + '\'' +
-                ", user=" + user +
-                '}';
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

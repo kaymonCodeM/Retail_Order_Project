@@ -25,9 +25,8 @@ public class Payment {
     private String zip;
 
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    @OneToOne(mappedBy = "payment")
+    private Order order;
 
     public Payment() {
     }
@@ -88,24 +87,11 @@ public class Payment {
         this.zip = zip;
     }
 
-    public User getUser() {
-        return user;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "paymentId=" + paymentId +
-                ", cardHolder='" + cardHolder + '\'' +
-                ", cardNumber=" + cardNumber +
-                ", expirationDate=" + expirationDate +
-                ", cvv=" + cvv +
-                ", zip='" + zip + '\'' +
-                ", user=" + user +
-                '}';
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
