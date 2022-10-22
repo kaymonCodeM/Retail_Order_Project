@@ -28,8 +28,6 @@ public class OrderServiceImp implements OrderService{
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private TransactionRepository transactionRepository;
@@ -38,17 +36,13 @@ public class OrderServiceImp implements OrderService{
     private ItemRepository itemRepository;
 
     //https://www.baeldung.com/java-add-text-to-image
-    private final String FILE_ORDER_URL = "src/main/resources/RetailOrders/";
-
-
-
     private double calculateDeliveryCharge(Item item,int quantity){
         return item.getWeight() *.15 * quantity;
     }
 
     private String uploadOrderFile(Order order){
 
-        String filePath = FILE_ORDER_URL +order.getUser().getUsername()+"/";
+        String filePath = "src/main/resources/RetailOrders/" +order.getUser().getUsername()+"/";
         double totalCost = 0.0;
 
         String content = "ORDER: " + order.getOrderId() + "\n";
@@ -110,10 +104,6 @@ public class OrderServiceImp implements OrderService{
         return filePath;
     }
 
-    private User validateUser(long userId){
-        Optional<User> user = userRepository.findById(userId);
-        return user.orElse(null);
-    }
 
 //    private String emailOrderDetails(String subject,String orderUrl){
 //        try {

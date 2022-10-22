@@ -16,7 +16,6 @@ public class Order {
     private long orderId;
     private LocalDate orderDate;
 
-    @Value("#{null}")
     private LocalDate deliveryDate;
 
     @Value("#{false}")

@@ -15,6 +15,9 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private OrderService orderService;
+
 
     //private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -59,6 +62,10 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
 
     @Override
     public String deleteUserById(long userId) {
+        List<Order> orders = orderService.findOrdersByUserId(userId);
+        for (Order o: orders){
+            orderService.deleteOrderById(o.getOrderId());
+        }
         userRepository.deleteById(userId);
 
         return "User deleted successfully by Id: " + userId;

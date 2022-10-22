@@ -21,7 +21,6 @@ public class Payment {
 
     private int cvv;
 
-    @Column(name = "zip")
     private String zip;
 
 
