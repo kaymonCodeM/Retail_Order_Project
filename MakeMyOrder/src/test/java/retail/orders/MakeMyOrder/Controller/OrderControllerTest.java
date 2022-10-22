@@ -36,7 +36,7 @@ class OrderControllerTest {
         Contact contact = new Contact("Kaymon","McCain","jhskfjh@snfk.con","251512124");
         Payment payment = new Payment("Kaymon","655118151514",LocalDate.of(2023,05,24) ,541,"6261511");
 
-        OrderRequest orderRequest = new OrderRequest(3,transactions,address,contact,payment);
+        OrderRequest orderRequest = new OrderRequest(5,transactions,address,contact,payment);
         Order order = orderController.addOrder(orderRequest);
         assertNotNull(order, "Add Order Failed");
     }

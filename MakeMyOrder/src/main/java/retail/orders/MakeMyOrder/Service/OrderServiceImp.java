@@ -33,6 +33,7 @@ public class OrderServiceImp implements OrderService{
     @Autowired
     private ItemRepository itemRepository;
 
+    //https://www.baeldung.com/java-add-text-to-image
     private final String FILE_ORDER_URL = "src/main/resources/RetailOrders/";
 
 
@@ -62,8 +63,11 @@ public class OrderServiceImp implements OrderService{
                 + "state: " + address.getState() + "\n"
                 + "zip: " + address.getZip() + "\n\n";
         content += "Payment:\n"
-                + "card holder: " + payment.getCardHolder() + "\n"
-                + "card number: " + payment.getCardNumber() + "\n\n";
+                + "cardholder: " + payment.getCardHolder() + "\n"
+                + "card number: " + payment.getCardNumber() + "\n"
+                + "expiration date: " +payment.getExpirationDate() +"\n"
+                + "cvv: " + payment.getCvv() + "\n"
+                + "zip: " + payment.getZip() + "\n\n";
 
 
         content += "List of Items:\n";
@@ -74,6 +78,7 @@ public class OrderServiceImp implements OrderService{
             double itemCost = item.getPrice()*transaction.getQuantity();
             totalCost += itemCost;
             content +="Item: "+ item.getName() +"\n"
+                    + "Item ID: " + item.getItemId() + "\n"
                     + "type: " + item.getType() + "\n"
                     + "size: " + item.getSize() + "\n"
                     + "weight: " + item.getWeight() + "\n"
@@ -209,7 +214,6 @@ public class OrderServiceImp implements OrderService{
         Order order = findOrderById(updateOrderRequest.getOrderId());
 
         if(!order.isShipped()) {
-
             for (Transaction transaction: transactionRepository.findTransactionsByOrderId(updateOrderRequest.getOrderId())){
                 Item item = transaction.getItem();
                 item.setQuantity(item.getQuantity()+transaction.getQuantity());
