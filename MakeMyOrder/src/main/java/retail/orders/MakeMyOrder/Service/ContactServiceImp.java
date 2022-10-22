@@ -29,10 +29,7 @@ public class ContactServiceImp implements ContactService{
 
     @Override
     public Contact updateContact(Contact contact) {
-        Contact newContact = contactRepository.save(contact);
-        contact.getUser().setContact(newContact);
-        userRepository.save(contact.getUser());
-        return contactRepository.save(newContact);
+        return contactRepository.save(contact);
     }
 
 
@@ -40,8 +37,6 @@ public class ContactServiceImp implements ContactService{
     public Contact clearPhoneById(long contactId) {
         Contact contact = getContactById(contactId);
         contact.setPhoneNumber(null);
-        contact.getUser().setContact(contact);
-        userRepository.save(contact.getUser());
         return contactRepository.save(contact);
     }
 
@@ -49,8 +44,6 @@ public class ContactServiceImp implements ContactService{
     public Contact clearEmailById(long contactId) {
         Contact contact = getContactById(contactId);
         contact.setEmail(null);
-        contact.getUser().setContact(contact);
-        userRepository.save(contact.getUser());
         return contactRepository.save(contact);
     }
 }

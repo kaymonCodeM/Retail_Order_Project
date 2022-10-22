@@ -47,11 +47,10 @@ public class ItemServiceImp implements ItemService{
 
     @Override
     public String removeItemById(long itemId) {
-        Item item = getItemById(itemId);
-        for(Transaction transaction: item.getTransactions()){
+        for(Transaction transaction: transactionRepository.findTransactionsByItemId(itemId)){
             transactionRepository.delete(transaction);
         }
-        itemRepository.delete(item);
-        return "Deleted item by id: " + itemId;
+        itemRepository.deleteById(itemId);
+        return "Deleted item successfully by id: " + itemId;
     }
 }

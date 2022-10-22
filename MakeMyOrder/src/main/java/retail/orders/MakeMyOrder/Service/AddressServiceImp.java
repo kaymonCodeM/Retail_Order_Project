@@ -30,9 +30,6 @@ public class AddressServiceImp implements AddressService {
 
     @Override
     public Address updateAddress(Address address) {
-        Address updatedAddress = addressRepository.save(address);
-        address.getUser().setAddress(updatedAddress);
-        userRepository.save(address.getUser());
         return addressRepository.save(address);
     }
 
@@ -45,8 +42,6 @@ public class AddressServiceImp implements AddressService {
         address.setState(null);
         address.setZip(null);
 
-        address.getUser().setAddress(address);
-        userRepository.save(address.getUser());
         return addressRepository.save(address);
     }
 }

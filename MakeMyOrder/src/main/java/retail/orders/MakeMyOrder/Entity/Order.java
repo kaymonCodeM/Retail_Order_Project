@@ -30,8 +30,8 @@ public class Order {
 
     private double totalCost;
 
-    @OneToMany(cascade=CascadeType.MERGE,fetch = FetchType.EAGER,mappedBy = "order")
-    private Set<Transaction> transactions;
+    @OneToMany(mappedBy = "order")
+    private List<Transaction> transactions;
 
     @ManyToOne
     @JoinColumn(name = "userId")
@@ -40,7 +40,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(LocalDate orderDate, Set<Transaction> transactions, User user) {
+    public Order(LocalDate orderDate, List<Transaction> transactions, User user) {
         this.orderDate = orderDate;
         this.transactions = transactions;
         this.user = user;
@@ -111,11 +111,11 @@ public class Order {
         this.totalCost = totalCost;
     }
 
-    public Set<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Set<Transaction> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 

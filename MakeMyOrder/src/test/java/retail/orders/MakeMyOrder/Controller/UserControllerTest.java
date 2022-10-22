@@ -17,13 +17,13 @@ class UserControllerTest {
 
     @Test
     void testAddUser(){
-        String s =  userController.addUser("Kay","pass","ROLE_USER");
+        String s =  userController.addUser("Shawn","pass","ROLE_USER");
         assertEquals(s,"successful new user","Test to add User failed");
     }
 
     @Test
     void deleteUser(){
-        String userId = "2";
+        String userId = "1";
         String s =  userController.deleteUser(userId);
         assertEquals(s,"User Deleted by Id: " + userId,"test to delete user failed");
     }

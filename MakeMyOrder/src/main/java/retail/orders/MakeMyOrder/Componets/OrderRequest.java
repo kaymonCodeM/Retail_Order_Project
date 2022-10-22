@@ -7,18 +7,19 @@ import retail.orders.MakeMyOrder.Entity.Payment;
 import retail.orders.MakeMyOrder.Entity.Transaction;
 
 import javax.persistence.Entity;
+import java.util.List;
 import java.util.Set;
 
 @Component
 public class OrderRequest {
 
     private long userId;
-    private Set<Transaction> transactions;
+    private List<Transaction> transactions;
     private Address address;
     private Contact contact;
     private Payment payment;
 
-    public OrderRequest(long userId, Set<Transaction> transactions, Address address, Contact contact, Payment payment) {
+    public OrderRequest(long userId, List<Transaction> transactions, Address address, Contact contact, Payment payment) {
         this.userId = userId;
         this.transactions = transactions;
         this.address = address;
@@ -37,11 +38,11 @@ public class OrderRequest {
         this.userId = userId;
     }
 
-    public Set<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Set<Transaction> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 

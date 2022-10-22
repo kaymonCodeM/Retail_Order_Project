@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Repository.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +26,9 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
 
 
     //private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -62,9 +64,6 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
             //String passwordEncode = passwordEncoder.encode(password);
 
             User user = new User(username,password,roles,saveContact,saveAddress);
-
-            saveAddress.setUser(user);
-            saveContact.setUser(user);
 
             userRepository.save(user);
         }else{
@@ -117,6 +116,9 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
 
 
             for (Order order : orderRepository.findOrderByUserId(userId)) {
+                for (Transaction transaction: transactionRepository.findTransactionsByOrderId(order.getOrderId())){
+                    transactionRepository.delete(transaction);
+                }
                 orderRepository.delete(order);
             }
 

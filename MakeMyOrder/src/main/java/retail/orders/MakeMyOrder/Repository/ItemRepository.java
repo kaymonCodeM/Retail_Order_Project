@@ -6,4 +6,5 @@ import retail.orders.MakeMyOrder.Entity.Item;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item,Long> {
+
 }

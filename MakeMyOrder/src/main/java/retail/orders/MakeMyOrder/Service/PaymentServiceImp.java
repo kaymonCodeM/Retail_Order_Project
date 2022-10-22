@@ -38,12 +38,11 @@ public class PaymentServiceImp implements PaymentService {
         }else{
             throw new RuntimeException("User by Id was not found: " + userId);
         }
-        payment.setUser(user);
-        Payment savePayment = paymentRepository.save(payment);
-        user.getPayments().add(savePayment);
+        user.getPayments().add(payment);
         userRepository.save(user);
 
-        return savePayment;
+        payment.setUser(user);
+        return paymentRepository.save(payment);
     }
 
     @Override
@@ -64,14 +63,6 @@ public class PaymentServiceImp implements PaymentService {
 
     @Override
     public String removePaymentById(long paymentId) {
-        Payment payment = getPaymentById(paymentId);
-        User user = payment.getUser();
-        for (Payment p : user.getPayments()){
-            if(p.getPaymentId()==paymentId){
-                user.getPayments().remove(payment);
-            }
-        }
-        userRepository.save(user);
         paymentRepository.deleteById(paymentId);
         return "Removed payment successfully";
     }

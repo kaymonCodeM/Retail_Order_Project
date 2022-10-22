@@ -23,8 +23,8 @@ public class Item {
 
     private double weight;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "item")
-    private Set<Transaction> transactions;
+    @OneToMany(mappedBy = "item")
+    private List<Transaction> transactions;
 
 
     public Item() {
@@ -113,11 +113,11 @@ public class Item {
         this.price = price;
     }
 
-    public Set<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Set<Transaction> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 

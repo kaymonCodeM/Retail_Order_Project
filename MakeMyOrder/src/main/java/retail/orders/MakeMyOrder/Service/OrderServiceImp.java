@@ -5,15 +5,13 @@ import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Componets.OrderRequest;
 import retail.orders.MakeMyOrder.Componets.UpdateOrderRequest;
 import retail.orders.MakeMyOrder.Entity.*;
+import retail.orders.MakeMyOrder.Repository.ItemRepository;
 import retail.orders.MakeMyOrder.Repository.OrderRepository;
 import retail.orders.MakeMyOrder.Repository.TransactionRepository;
 import retail.orders.MakeMyOrder.Repository.UserRepository;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -32,7 +30,10 @@ public class OrderServiceImp implements OrderService{
     @Autowired
     private TransactionRepository transactionRepository;
 
-    private final String FILE_ORDER_URL = "MakeMyOrder/src/main/resources/RetailOrders/";
+    @Autowired
+    private ItemRepository itemRepository;
+
+    private final String FILE_ORDER_URL = "src/main/resources/RetailOrders/";
 
 
 
@@ -79,8 +80,6 @@ public class OrderServiceImp implements OrderService{
                     + "quantity: " + transaction.getQuantity() + "\n"
                     + "cost: " + String.format("$ %.2f",itemCost)
                     +"\n\n";
-
-            transaction.setOrder(order);
 
             deliveryCost = calculateDeliveryCharge(item,transaction.getQuantity());
         }
@@ -134,15 +133,24 @@ public class OrderServiceImp implements OrderService{
         String orderUrl = uploadOrderFile(orderRequest.getContact(),orderRequest.getAddress(),orderRequest.getPayment(),saveOrder);
         saveOrder.setOrderSummeryUrl(orderUrl);
 
+        Order reSavedOrder = orderRepository.save(saveOrder);
+
         for (Transaction transaction: orderRequest.getTransactions()){
-            transaction.setOrder(saveOrder);
+
+            Item item = transaction.getItem();
+            item.setQuantity(item.getQuantity()-transaction.getQuantity());
+            Item saveItem = itemRepository.save(item);
+
+            transaction.setItem(saveItem);
+            transaction.setOrder(reSavedOrder);
+            transactionRepository.save(transaction);
         }
 
 
         //String subject = "ORDER from: " + user.getUsername();
         //System.out.println(emailOrderDetails(subject,orderUrl));
 
-        return orderRepository.save(saveOrder);
+        return reSavedOrder;
     }
 
     @Override
@@ -171,15 +179,10 @@ public class OrderServiceImp implements OrderService{
 
     @Override
     public String deleteOrderById(long orderId) {
-        Order order = findOrderById(orderId);
-        for (Transaction transaction: order.getTransactions()){
+        for (Transaction transaction: transactionRepository.findTransactionsByOrderId(orderId)){
             transactionRepository.delete(transaction);
         }
-        order.getTransactions().clear();
-
-        order.getUser().getOrders().remove(order);
-        userRepository.save(order.getUser());
-        orderRepository.delete(order);
+        orderRepository.deleteById(orderId);
         return "Delete Order Successful";
     }
 
@@ -207,22 +210,28 @@ public class OrderServiceImp implements OrderService{
 
         if(!order.isShipped()) {
 
-            for (Transaction transaction: order.getTransactions()){
+            for (Transaction transaction: transactionRepository.findTransactionsByOrderId(updateOrderRequest.getOrderId())){
+                Item item = transaction.getItem();
+                item.setQuantity(item.getQuantity()+transaction.getQuantity());
+                Item saveItem = itemRepository.save(item);
+
+                transaction.setItem(saveItem);
                 transactionRepository.delete(transaction);
             }
+
+            order.setTransactions(updateOrderRequest.getTransactions());
+            String orderUrl = uploadOrderFile(updateOrderRequest.getContact(), updateOrderRequest.getAddress(), updateOrderRequest.getPayment(), order);
+            order.setOrderSummeryUrl(orderUrl);
+
+            Order saveOrder = orderRepository.save(order);
+
             for (Transaction transaction: updateOrderRequest.getTransactions()){
-                transaction.setOrder(order);
+                transaction.setOrder(saveOrder);
                 transactionRepository.save(transaction);
             }
 
-            order.getTransactions().clear();
-            order.setTransactions(updateOrderRequest.getTransactions());
-
-            String orderUrl = uploadOrderFile(updateOrderRequest.getContact(), updateOrderRequest.getAddress(), updateOrderRequest.getPayment(), order);
-
 //            String subject = "UPDATE ORDER from: " + order.getUser();
 //            System.out.println(emailOrderDetails(subject, orderUrl));
-            orderRepository.save(order);
         }else {
             return "Error: Order has already been shipped";
         }

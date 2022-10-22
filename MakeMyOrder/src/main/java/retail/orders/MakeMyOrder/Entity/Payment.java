@@ -10,17 +10,15 @@ import java.util.List;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "paymentId")
     private long paymentId;
 
-    @Column(name = "cardHolder")
     private String cardHolder;
 
-    @Column(name = "cardNumber")
+
     private String cardNumber;
-    @Column(name = "expirationDate")
+
     private LocalDate expirationDate;
-    @Column(name = "cvv")
+
     private int cvv;
 
     @Column(name = "zip")
