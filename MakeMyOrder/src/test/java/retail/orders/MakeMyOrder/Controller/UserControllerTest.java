@@ -23,7 +23,7 @@ class UserControllerTest {
 
     @Test
     void deleteUser(){
-        String userId = "7";
+        String userId = "2";
         String s =  userController.deleteUser(userId);
         assertEquals(s,"User Deleted by Id: " + userId,"test to delete user failed");
     }

@@ -111,15 +111,14 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
         if(innerUser.isPresent()){
             User user = innerUser.get();
 
-            for (Payment payment: user.getPayments()){
+            for (Payment payment : paymentRepository.findPaymentsByUserId(userId)) {
                 paymentRepository.delete(payment);
             }
-            user.getPayments().clear();
 
-            for(Order order: user.getOrders()){
+
+            for (Order order : orderRepository.findOrderByUserId(userId)) {
                 orderRepository.delete(order);
             }
-            user.getOrders().clear();
 
             this.userRepository.delete(user);
 

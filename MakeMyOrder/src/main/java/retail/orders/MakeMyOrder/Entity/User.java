@@ -18,7 +18,7 @@ public class User {
     private boolean active = true;
     private String roles;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @Value("#{new java.util.ArrayList()}")
     private Set<Payment> payments;
 
@@ -31,7 +31,7 @@ public class User {
     @JoinColumn(name = "addressId")
     private Address address;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     @Value("#{new java.util.ArrayList()}")
     private Set<Order> orders;
 
