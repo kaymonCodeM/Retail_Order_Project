@@ -36,7 +36,7 @@ class OrderControllerTest {
         transactions.add(transaction2);
 
         Address address = new Address("741 M ST","NE","Lincoln","NE","54641");
-        Contact contact = new Contact("Kaymon","McCain","jhskfjh@snfk.con","251512124");
+        Contact contact = new Contact("Kaymon","McCain","mkaymon@gmail.com","251512124");
         Payment payment = new Payment("Kaymon","655118151514",LocalDate.of(2023,05,24) ,541,"6261511");
 
         User user = myUserDetailsService.getUserById(4);

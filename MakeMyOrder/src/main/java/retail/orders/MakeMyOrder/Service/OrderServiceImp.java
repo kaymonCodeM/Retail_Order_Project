@@ -13,8 +13,6 @@ import java.util.*;
 @Service
 public class OrderServiceImp implements OrderService{
 
-    //@Autowired
-    //private EmailSenderService emailSenderService;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -105,16 +103,6 @@ public class OrderServiceImp implements OrderService{
     }
 
 
-//    private String emailOrderDetails(String subject,String orderUrl){
-//        try {
-//            String body = Files.readString(Path.of(orderUrl));
-//            System.out.println(emailSenderService.sendEmail(subject,body));
-//        }catch (Exception e){
-//            return "ERROR email order was not successful";
-//        }
-//        return "Email order details successfully";
-//    }
-
 
     @Override
     public List<Order> findOrders() {
@@ -155,10 +143,6 @@ public class OrderServiceImp implements OrderService{
             transaction.setOrder(reSavedOrder);
             transactionRepository.save(transaction);
         }
-
-
-        //orderRequest.setSubject("ORDER Request from: " + order.getUser().getUsername());
-        //System.out.println(emailOrderDetails(orderRequest.getSubject(),orderUrl));
 
         return reSavedOrder;
     }

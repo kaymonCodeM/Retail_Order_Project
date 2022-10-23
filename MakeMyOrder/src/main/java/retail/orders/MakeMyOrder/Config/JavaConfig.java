@@ -16,8 +16,8 @@ public class JavaConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("spam@gmail.com");
-        mailSender.setPassword("umdohyscmbqtisdx");
+        mailSender.setUsername("my.springboot.email@gmail.com");
+        mailSender.setPassword("ioemxpkoalhviful");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

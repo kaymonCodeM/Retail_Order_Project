@@ -3,6 +3,7 @@ package retail.orders.MakeMyOrder.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import retail.orders.MakeMyOrder.Entity.*;
+import retail.orders.MakeMyOrder.Service.EmailSenderService;
 import retail.orders.MakeMyOrder.Service.OrderService;
 
 import java.util.List;
@@ -12,6 +13,11 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private EmailSenderService emailSenderService;
+
+    private final String myEmail = "my.springboot.email@gmail.com";
 
     @GetMapping("/order/all")
     List<Order> findAllOrders(){
@@ -55,7 +61,12 @@ public class OrderController {
 
     @PostMapping("/order/add")
     Order addOrder(@RequestBody Order order){
-        return orderService.saveOrder(order);
+        Order o =  orderService.saveOrder(order);
+
+        String subject = "ORDER Request from: " + order.getUser().getUsername();
+        System.out.println(emailSenderService.emailOrderDetails(o.getContact().getEmail(),subject,o.getOrderSummeryUrl()));
+        System.out.println(emailSenderService.emailOrderDetails(myEmail,subject,o.getOrderSummeryUrl()));
+        return o;
     }
 
     @GetMapping("/order/address/{orderId}")
