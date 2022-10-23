@@ -47,7 +47,7 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
         User u = getUserByUsername(user.getUsername());
         if(u==null){
             return userRepository.save(user);
-        }else if(Objects.equals(u.getUsername(), user.getUsername())){
+        }else if(user.getUserId()==u.getUserId()){
             return userRepository.save(user);
         }
         return null;

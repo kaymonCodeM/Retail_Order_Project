@@ -1,5 +1,7 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +12,7 @@ import java.util.Set;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
     private long itemId;
 
     private String name;

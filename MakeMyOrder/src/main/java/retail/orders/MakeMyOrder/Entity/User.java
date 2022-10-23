@@ -1,6 +1,8 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,8 +14,11 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
     private long userId;
+
     private String username;
+
     private String password;
     private boolean active = true;
     private String roles;

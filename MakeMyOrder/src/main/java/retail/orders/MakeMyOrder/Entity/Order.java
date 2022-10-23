@@ -1,5 +1,6 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.Set;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
     private long orderId;
     private LocalDate orderDate;
 
@@ -30,23 +32,23 @@ public class Order {
     private double totalCost;
 
     @OneToOne
-    @JoinColumn(name = "paymentId")
+    @JoinColumn(name = "paymentId",updatable = false)
     private Payment payment;
 
 
     @OneToOne
-    @JoinColumn(name = "contactId")
+    @JoinColumn(name = "contactId",updatable = false)
     private Contact contact;
 
     @OneToOne
-    @JoinColumn(name = "addressId")
+    @JoinColumn(name = "addressId",updatable = false)
     private Address address;
 
     @OneToMany(mappedBy = "order")
     private List<Transaction> transactions;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userId",updatable = false)
     private User user;
 
     public Order() {

@@ -1,6 +1,8 @@
 package retail.orders.MakeMyOrder.Entity;
 
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,16 +11,17 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
     private long transactionId;
 
-    @OneToOne
-    @JoinColumn(name = "itemId")
+    @ManyToOne
+    @JoinColumn(name = "itemId",updatable = false)
     private Item item;
 
     private int quantity;
 
     @ManyToOne
-    @JoinColumn(name = "orderId")
+    @JoinColumn(name = "orderId",updatable = false)
     private Order order;
 
     public Transaction(Item item, int quantity) {

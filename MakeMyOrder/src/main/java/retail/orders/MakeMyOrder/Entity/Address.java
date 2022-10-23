@@ -8,11 +8,17 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
     private long addressId;
+    @Column(updatable = false)
     private String streetAddress;
+    @Column(updatable = false)
     private String Country;
+    @Column(updatable = false)
     private String city;
+    @Column(updatable = false)
     private String State;
+    @Column(updatable = false)
     private String zip;
 
     @OneToOne(mappedBy = "address")

@@ -8,11 +8,19 @@ import java.util.List;
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
     private long contactId;
 
+    @Column(updatable = false)
     private String firstname;
+
+    @Column(updatable = false)
     private String lastname;
+
+    @Column(updatable = false)
     private String email;
+
+    @Column(updatable = false)
     private String phoneNumber;
 
     @OneToOne(mappedBy = "contact")

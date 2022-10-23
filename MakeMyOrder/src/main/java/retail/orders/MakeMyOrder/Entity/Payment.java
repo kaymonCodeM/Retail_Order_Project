@@ -1,5 +1,7 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -10,17 +12,22 @@ import java.util.List;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false,updatable = false)
     private long paymentId;
 
+    @Column(updatable = false)
     private String cardHolder;
 
-
+    @Column(updatable = false)
     private String cardNumber;
 
+    @Column(updatable = false)
     private LocalDate expirationDate;
 
+    @Column(updatable = false)
     private int cvv;
 
+    @Column(updatable = false)
     private String zip;
 
 
