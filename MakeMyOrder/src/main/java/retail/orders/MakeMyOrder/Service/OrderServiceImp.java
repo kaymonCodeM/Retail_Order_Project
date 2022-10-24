@@ -1,5 +1,6 @@
 package retail.orders.MakeMyOrder.Service;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.*;
@@ -32,6 +33,9 @@ public class OrderServiceImp implements OrderService{
 
     @Autowired
     private ItemRepository itemRepository;
+
+    @Autowired
+    private Logger log;
 
     //https://www.baeldung.com/java-add-text-to-image
     private double calculateDeliveryCharge(Item item,int quantity){
@@ -97,8 +101,10 @@ public class OrderServiceImp implements OrderService{
             filePath +="order"+ order.getOrderId()+ ".txt";
             Files.writeString(Path.of(filePath),content);
         }catch (Exception e){
+            log.error("Error: File was not found while creating order number " + order.getOrderId());
             return "File was not created";
         }
+        log.debug("Order file number " + order.getOrderId() + " is now created file path: " + filePath);
         return filePath;
     }
 
@@ -123,14 +129,19 @@ public class OrderServiceImp implements OrderService{
         Address saveAddress = addressRepository.save(order.getAddress());
         Contact saveContact = contactRepository.save(order.getContact());
 
+        log.debug("Payment number " + savePayment.getPaymentId() + " is now saved");
+        log.debug("Address number " + saveAddress.getAddressId() + " is now saved");
+        log.debug("Contact number " + saveContact.getContactId() + " is now saved");
+
         order.setPayment(savePayment);
         order.setAddress(saveAddress);
         order.setContact(saveContact);
 
         Order saveOrder = orderRepository.save(order);
         order.setOrderSummeryUrl(uploadOrderFile(saveOrder));
-
         Order reSavedOrder = orderRepository.save(saveOrder);
+
+        log.debug("Order number " + reSavedOrder.getOrderId() + " is now saved");
 
 
         for (Transaction transaction: order.getTransactions()){
@@ -138,12 +149,15 @@ public class OrderServiceImp implements OrderService{
             Item item = transaction.getItem();
             item.setQuantity(item.getQuantity()-transaction.getQuantity());
             Item saveItem = itemRepository.save(item);
+            log.debug("Item number " + item.getItemId() + " quantity is now updated");
 
             transaction.setItem(saveItem);
             transaction.setOrder(reSavedOrder);
             transactionRepository.save(transaction);
+            log.debug("Transaction number " + transaction.getTransactionId()+ " is now saved");
         }
 
+        log.debug("order number: "+ reSavedOrder.getOrderId()+ " is now saved");
         return reSavedOrder;
     }
 
@@ -152,12 +166,15 @@ public class OrderServiceImp implements OrderService{
         Order order = findOrderById(orderId);
         //System.out.println(emailOrderDetails("Cancel Order Request from: " + order.getUser().getUsername(),order.getOrderSummeryUrl()));
         if(order.isShipped()){
+            log.debug("Order number "+orderId + " is shipped but tried to cancel order");
             return "Order already shipped";
         }
         if(order.isComplete()){
+            log.debug("Order number "+orderId + " is complete but tried to cancel order");
             return "Order already complete";
         }
         order.setCanceled(true);
+        log.debug("Order number " + orderId + "is now canceled");
         return "Cancel Successful";
     }
 
@@ -172,7 +189,8 @@ public class OrderServiceImp implements OrderService{
         Order order = findOrderById(orderId);
 
         if(order==null){
-            return "ERROR: order was not found";
+            log.error("Tried to delete but orderId: " + orderId + " was not found");
+            return "Order was not found";
         }
 
         Address address = order.getAddress();
@@ -181,6 +199,7 @@ public class OrderServiceImp implements OrderService{
 
         for (Transaction transaction: transactionRepository.findTransactionsByOrderId(orderId)){
             transactionRepository.delete(transaction);
+            log.debug("Transaction number " + transaction.getTransactionId() + " is now deleted");
         }
 
         orderRepository.delete(order);
@@ -188,6 +207,11 @@ public class OrderServiceImp implements OrderService{
         contactRepository.delete(contact);
         paymentRepository.delete(payment);
 
+        log.debug("Address number " + address.getAddressId() + " is now deleted");
+        log.debug("Contact number " + contact.getContactId() + " is now deleted");
+        log.debug("Payment number " + payment.getPaymentId() + " is now deleted");
+
+        log.debug("Order number " + orderId + " is now deleted");
         return "Delete Order Successful";
     }
 
@@ -205,6 +229,7 @@ public class OrderServiceImp implements OrderService{
         order.setDeliveryDate(LocalDate.now());
         order.setComplete(true);
         orderRepository.save(order);
+        log.debug("Order number " + orderId + " is now shipped");
         return "Order is now complete";
     }
 
@@ -217,16 +242,20 @@ public class OrderServiceImp implements OrderService{
                 Item item = transaction.getItem();
                 item.setQuantity(item.getQuantity()+transaction.getQuantity());
                 Item saveItem = itemRepository.save(item);
+                log.debug("Item number " + item.getItemId() + " quantity is now updated");
 
                 transaction.setItem(saveItem);
                 transactionRepository.delete(transaction);
+                log.debug("Transaction number " + transaction.getTransactionId() + " is now deleted");
             }
 
 
         }else {
+            log.error("Order number " + order.getOrderId() + " was not found");
             return null;
         }
 
+        log.debug("Order number " + order.getOrderId() + " is now updated");
         return saveOrder(order);
     }
 

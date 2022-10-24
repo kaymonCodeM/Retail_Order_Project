@@ -1,9 +1,12 @@
 package retail.orders.MakeMyOrder.Config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import retail.orders.MakeMyOrder.MakeMyOrderApplication;
 
 import java.util.Properties;
 
@@ -27,5 +30,10 @@ public class JavaConfig {
         props.put("mail.smtp.ssl.trust","*");
 
         return mailSender;
+    }
+
+    @Bean
+    Logger getLogger(){
+        return LoggerFactory.getLogger(MakeMyOrderApplication.class);
     }
 }

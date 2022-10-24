@@ -1,0 +1,19 @@
+1549 [main] INFO  r.o.M.Controller.UserControllerTest - Starting UserControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 8908 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1563 [main] DEBUG r.o.M.Controller.UserControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1563 [main] INFO  r.o.M.Controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+8920 [main] INFO  r.o.M.Controller.UserControllerTest - Started UserControllerTest in 7.863 seconds (JVM running for 9.895)
+1080 [main] INFO  r.o.M.Controller.UserControllerTest - Starting UserControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 9924 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1095 [main] DEBUG r.o.M.Controller.UserControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1095 [main] INFO  r.o.M.Controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+8559 [main] INFO  r.o.M.Controller.UserControllerTest - Started UserControllerTest in 7.783 seconds (JVM running for 11.508)
+9124 [main] ERROR r.o.M.MakeMyOrderApplication - User id: 0 was not found
+1293 [main] INFO  r.o.M.Controller.UserControllerTest - Starting UserControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 16856 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1293 [main] DEBUG r.o.M.Controller.UserControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1293 [main] INFO  r.o.M.Controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+7639 [main] INFO  r.o.M.Controller.UserControllerTest - Started UserControllerTest in 6.71 seconds (JVM running for 8.506)
+8110 [main] DEBUG r.o.M.MakeMyOrderApplication - User id: 0 is now saved
+1368 [main] INFO  r.o.M.Controller.UserControllerTest - Starting UserControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 12016 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1379 [main] DEBUG r.o.M.Controller.UserControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1379 [main] INFO  r.o.M.Controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+9463 [main] INFO  r.o.M.Controller.UserControllerTest - Started UserControllerTest in 8.538 seconds (JVM running for 10.409)
+9965 [main] ERROR r.o.M.MakeMyOrderApplication - User was not created
