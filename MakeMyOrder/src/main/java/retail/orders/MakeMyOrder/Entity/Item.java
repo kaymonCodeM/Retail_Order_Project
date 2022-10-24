@@ -1,5 +1,6 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.fasterxml.jackson.annotation.*;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Item {
     private double weight;
 
     @OneToMany(mappedBy = "item")
+    @JsonIgnore
     private List<Transaction> transactions;
 
 

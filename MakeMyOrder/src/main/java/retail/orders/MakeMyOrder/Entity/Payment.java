@@ -1,5 +1,9 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -32,6 +36,7 @@ public class Payment {
 
 
     @OneToOne(mappedBy = "payment")
+    @JsonIgnoreProperties("payment")
     private Order order;
 
     public Payment() {
@@ -99,5 +104,18 @@ public class Payment {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentId=" + paymentId +
+                ", cardHolder='" + cardHolder + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", expirationDate=" + expirationDate +
+                ", cvv=" + cvv +
+                ", zip='" + zip + '\'' +
+                ", order=" + order +
+                '}';
     }
 }

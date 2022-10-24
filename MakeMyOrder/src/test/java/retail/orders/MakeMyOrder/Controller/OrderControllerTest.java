@@ -39,11 +39,29 @@ class OrderControllerTest {
         Contact contact = new Contact("Kaymon","McCain","mkaymon@gmail.com","251512124");
         Payment payment = new Payment("Kaymon","655118151514",LocalDate.of(2023,05,24) ,541,"6261511");
 
-        User user = myUserDetailsService.getUserById(4);
+        User user = myUserDetailsService.getUserById(9);
         Order order = new Order(payment,contact,address,transactions,user);
 
         Order result = orderController.addOrder(order);
 
         assertNotNull(result, "Add Order Failed");
+    }
+
+    @Test
+    void getAllTransactions(){
+        List<Transaction> transactions = orderController.findAllTransactions();
+        for (Transaction transaction: transactions){
+            System.out.println(transaction);
+        }
+        assertNotNull(transactions, "Add Order Failed");
+    }
+
+    @Test
+    void getAllOrders(){
+        List<Order> orders = orderController.findAllOrders();
+        for (Order o: orders){
+            System.out.println(o);
+        }
+        assertNotNull(orders, "Add Order Failed");
     }
 }

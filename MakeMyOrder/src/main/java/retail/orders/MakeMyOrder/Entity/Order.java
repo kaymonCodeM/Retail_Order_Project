@@ -1,5 +1,6 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.fasterxml.jackson.annotation.*;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -33,22 +34,27 @@ public class Order {
 
     @OneToOne
     @JoinColumn(name = "paymentId",updatable = false)
+    @JsonIgnoreProperties("order")
     private Payment payment;
 
 
     @OneToOne
     @JoinColumn(name = "contactId",updatable = false)
+    @JsonIgnoreProperties("order")
     private Contact contact;
 
     @OneToOne
     @JoinColumn(name = "addressId",updatable = false)
+    @JsonIgnoreProperties("order")
     private Address address;
 
     @OneToMany(mappedBy = "order")
+    @JsonIgnore
     private List<Transaction> transactions;
 
     @ManyToOne
     @JoinColumn(name = "userId",updatable = false)
+    @JsonIgnoreProperties("orders")
     private User user;
 
     public Order() {
@@ -164,5 +170,24 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", orderDate=" + orderDate +
+                ", deliveryDate=" + deliveryDate +
+                ", canceled=" + canceled +
+                ", shipped=" + shipped +
+                ", complete=" + complete +
+                ", orderSummeryUrl='" + orderSummeryUrl + '\'' +
+                ", totalCost=" + totalCost +
+                ", payment=" + payment +
+                ", contact=" + contact +
+                ", address=" + address +
+                ", transactions=" + transactions +
+                ", user=" + user +
+                '}';
     }
 }

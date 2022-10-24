@@ -1,9 +1,11 @@
 package retail.orders.MakeMyOrder.Controller;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import retail.orders.MakeMyOrder.Entity.Item;
+import retail.orders.MakeMyOrder.MakeMyOrderApplication;
 import retail.orders.MakeMyOrder.Service.ItemService;
 
 import java.util.List;
@@ -13,8 +15,7 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
-    @Autowired
-    private Logger log;
+    private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
 
     @GetMapping("/item/all")
     List<Item> getAllItems(){

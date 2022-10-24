@@ -1,5 +1,10 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,6 +29,7 @@ public class Contact {
     private String phoneNumber;
 
     @OneToOne(mappedBy = "contact")
+    @JsonIgnoreProperties("contact")
     private Order order;
 
     public Contact() {
@@ -82,5 +88,17 @@ public class Contact {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "contactId=" + contactId +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", order=" + order +
+                '}';
     }
 }

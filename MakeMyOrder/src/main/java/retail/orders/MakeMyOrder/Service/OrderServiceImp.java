@@ -1,9 +1,11 @@
 package retail.orders.MakeMyOrder.Service;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.*;
+import retail.orders.MakeMyOrder.MakeMyOrderApplication;
 import retail.orders.MakeMyOrder.Repository.*;
 
 import java.nio.file.Files;
@@ -34,8 +36,7 @@ public class OrderServiceImp implements OrderService{
     @Autowired
     private ItemRepository itemRepository;
 
-    @Autowired
-    private Logger log;
+    private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
 
     //https://www.baeldung.com/java-add-text-to-image
     private double calculateDeliveryCharge(Item item,int quantity){

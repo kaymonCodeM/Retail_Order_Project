@@ -1,5 +1,6 @@
 package retail.orders.MakeMyOrder.Entity;
 
+import com.fasterxml.jackson.annotation.*;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
@@ -11,28 +12,32 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tbl_user")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "userId")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false,updatable = false)
     private long userId;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
-    private boolean active = true;
+    private boolean active;
     private String roles;
 
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private List<Order> orders;
 
     public User() {
     }
 
-    public User(String username, String password, String roles) {
+    public User(String username, String password,boolean active, String roles) {
         this.username = username;
         this.password = password;
+        this.active = true;
         this.roles = roles;
     }
 
@@ -82,5 +87,17 @@ public class User {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", roles='" + roles + '\'' +
+                ", orders=" + orders +
+                '}';
     }
 }

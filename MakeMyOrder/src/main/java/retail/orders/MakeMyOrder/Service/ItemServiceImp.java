@@ -1,10 +1,12 @@
 package retail.orders.MakeMyOrder.Service;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.Item;
 import retail.orders.MakeMyOrder.Entity.Transaction;
+import retail.orders.MakeMyOrder.MakeMyOrderApplication;
 import retail.orders.MakeMyOrder.Repository.ItemRepository;
 import retail.orders.MakeMyOrder.Repository.TransactionRepository;
 
@@ -20,8 +22,7 @@ public class ItemServiceImp implements ItemService{
     @Autowired
     private TransactionRepository transactionRepository;
 
-    @Autowired
-    private Logger log;
+    private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
 
     @Override
     public List<Item> getItems() {

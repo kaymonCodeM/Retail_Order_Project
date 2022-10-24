@@ -1,9 +1,15 @@
 package retail.orders.MakeMyOrder.Service;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import retail.orders.MakeMyOrder.Entity.*;
+import retail.orders.MakeMyOrder.MakeMyOrderApplication;
 import retail.orders.MakeMyOrder.Repository.*;
 
 import java.util.List;
@@ -19,10 +25,10 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private Logger log;
 
-    //private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
+
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
     @Override
@@ -38,7 +44,12 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
 
     @Override
     public User addUser(User user) {
+
         Optional<User> u = userRepository.findByUsername(user.getUsername());
+
+        String passwordEncode = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passwordEncode);
+
         if(u.isEmpty()){
             log.debug("User is now saved successfully");
             return userRepository.save(user);
@@ -50,6 +61,10 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     @Override
     public User updateUser(User user) {
         User u = getUserByUsername(user.getUsername());
+
+        String passwordEncode = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passwordEncode);
+
         if(u==null){
             log.debug("User id: "+ user.getUserId() + " is now updated");
             return userRepository.save(user);
@@ -79,16 +94,17 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
         log.debug("User id: "+ userId + " deleted successfully");
         return "User deleted successfully by Id: " + userId;
     }
-//
-//    @Override
-//    public PasswordEncoder getEncoder() {
-//        return this.passwordEncoder;
-//    }
-//
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return userRepository.findByUsername(username)
-//                .map(MyUserDetails::new)
-//                .orElseThrow(()->new UsernameNotFoundException("Username not found: " + username));
-//    }
+
+    @Override
+    public PasswordEncoder getEncoder() {
+        return this.passwordEncoder;
+    }
+
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username)
+                .map(MyUserDetails::new)
+                .orElseThrow(()->new UsernameNotFoundException("Username not found: " + username));
+    }
 }

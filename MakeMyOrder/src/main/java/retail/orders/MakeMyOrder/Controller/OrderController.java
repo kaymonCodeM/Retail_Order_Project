@@ -1,9 +1,11 @@
 package retail.orders.MakeMyOrder.Controller;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import retail.orders.MakeMyOrder.Entity.*;
+import retail.orders.MakeMyOrder.MakeMyOrderApplication;
 import retail.orders.MakeMyOrder.Service.EmailSenderService;
 import retail.orders.MakeMyOrder.Service.OrderService;
 
@@ -18,8 +20,8 @@ public class OrderController {
     @Autowired
     private EmailSenderService emailSenderService;
 
-    @Autowired
-    private Logger log;
+
+    private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
 
     private final String myEmail = "my.springboot.email@gmail.com";
 
@@ -68,8 +70,8 @@ public class OrderController {
         Order o =  orderService.saveOrder(order);
 
         String subject = "ORDER Request from: " + order.getUser().getUsername();
-        System.out.println(emailSenderService.emailOrderDetails(o.getContact().getEmail(),subject,o.getOrderSummeryUrl()));
-        System.out.println(emailSenderService.emailOrderDetails(myEmail,subject,o.getOrderSummeryUrl()));
+        log.info(emailSenderService.emailOrderDetails(o.getContact().getEmail(),subject,o.getOrderSummeryUrl()));
+        log.info(emailSenderService.emailOrderDetails(myEmail,subject,o.getOrderSummeryUrl()));
         return o;
     }
 
@@ -100,5 +102,11 @@ public class OrderController {
     @GetMapping("/transactions")
     List<Transaction> findAllTransactions(){
         return orderService.findAllTransactions();
+    }
+
+    @PostMapping("/order/giftMessage")
+    String sendGiftMessage(Contact contact,String message){
+        String subject = "Gift message from: " + contact.getFirstname();
+        return emailSenderService.sendEmail(contact.getEmail(),subject,message);
     }
 }

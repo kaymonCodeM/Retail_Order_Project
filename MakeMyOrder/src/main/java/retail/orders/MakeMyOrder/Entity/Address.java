@@ -1,6 +1,11 @@
 package retail.orders.MakeMyOrder.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +27,7 @@ public class Address {
     private String zip;
 
     @OneToOne(mappedBy = "address")
+    @JsonIgnoreProperties("address")
     private Order order;
 
     public Address(String streetAddress, String country, String city, String state, String zip) {
@@ -89,5 +95,18 @@ public class Address {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", streetAddress='" + streetAddress + '\'' +
+                ", Country='" + Country + '\'' +
+                ", city='" + city + '\'' +
+                ", State='" + State + '\'' +
+                ", zip='" + zip + '\'' +
+                ", order=" + order +
+                '}';
     }
 }

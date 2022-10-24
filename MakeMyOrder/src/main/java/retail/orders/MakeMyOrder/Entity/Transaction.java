@@ -1,6 +1,7 @@
 package retail.orders.MakeMyOrder.Entity;
 
 
+import com.fasterxml.jackson.annotation.*;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -62,5 +63,15 @@ public class Transaction {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionId=" + transactionId +
+                ", item=" + item +
+                ", quantity=" + quantity +
+                ", order=" + order +
+                '}';
     }
 }

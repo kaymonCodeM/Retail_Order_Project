@@ -1,10 +1,12 @@
 package retail.orders.MakeMyOrder.Service;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import retail.orders.MakeMyOrder.MakeMyOrderApplication;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,8 +17,8 @@ public class EmailSenderServiceImp implements EmailSenderService{
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @Autowired
-    private Logger log;
+
+    private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
 
     @Override
     public String sendEmail(String toEmail,String subject, String body) {
@@ -38,7 +40,7 @@ public class EmailSenderServiceImp implements EmailSenderService{
             log.debug("Email to "+ toEmail + " was not sent");
             return "ERROR email order was not successful log" + e;
         }
-        log.debug("Order summery to: " + toEmail+ "was successful");
+        log.debug("Order summery to: " + toEmail+ " was successful");
         return "Email order details successfully";
     }
 }

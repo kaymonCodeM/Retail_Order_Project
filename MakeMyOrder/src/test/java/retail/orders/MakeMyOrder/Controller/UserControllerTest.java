@@ -18,21 +18,21 @@ class UserControllerTest {
 
     @Test
     void addUser(){
-        User user = new User("ljdfkn","pass","ROLE_USER");
+        User user = new User("ljjhnwfjnk","pass",true,"ROLE_USER");
         User result =  userController.addUser(user);
         assertNotNull(result,"Test to add User failed");
     }
 
     @Test
     void deleteUser(){
-        String userId = "2";
+        String userId = "4";
         String s =  userController.deleteUser(userId);
         assertEquals(s,"User deleted successfully by Id: " + userId,"test to delete user failed");
     }
 
     @Test
     void updateUser(){
-        User user = new User("Hannah","pass","ROLE_USER");
+        User user = new User("Hannah","pass",true,"ROLE_USER");
         user.setUserId(4);
         User result = userController.updateUser(user);
         assertNotNull(result,"Test to add User failed");
