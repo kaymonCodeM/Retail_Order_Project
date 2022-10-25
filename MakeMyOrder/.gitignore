@@ -33,4 +33,4 @@ build/
 .vscode/
 
 # Config info
-/Config/JavaConfig.class
+Config/
