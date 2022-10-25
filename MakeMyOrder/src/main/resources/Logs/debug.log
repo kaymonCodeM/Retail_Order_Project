@@ -230,3 +230,23 @@ Failed message 1: com.sun.mail.smtp.SMTPSendFailedException: 550 5.4.5 Daily use
 36028 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mytestspringboot54321@gmail.com
 36028 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mytestspringboot54321@gmail.com was successful
 36028 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+1702 [main] INFO  r.o.M.C.OrderControllerTest - Starting OrderControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 16624 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1702 [main] DEBUG r.o.M.C.OrderControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1702 [main] INFO  r.o.M.C.OrderControllerTest - No active profile set, falling back to 1 default profile: "default"
+13420 [main] INFO  r.o.M.C.OrderControllerTest - Started OrderControllerTest in 12.233 seconds (JVM running for 14.682)
+15150 [main] DEBUG r.o.M.MakeMyOrderApplication - Payment number 30 is now saved
+15150 [main] DEBUG r.o.M.MakeMyOrderApplication - Address number 30 is now saved
+15150 [main] DEBUG r.o.M.MakeMyOrderApplication - Contact number 30 is now saved
+15493 [main] DEBUG r.o.M.MakeMyOrderApplication - Order file number 30 is now created file path: src/main/resources/RetailOrders/Kaymon/order30.txt
+16246 [main] DEBUG r.o.M.MakeMyOrderApplication - Order number 30 is now saved
+16340 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+16488 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 57 is now saved
+16571 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+16729 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 58 is now saved
+16729 [main] DEBUG r.o.M.MakeMyOrderApplication - order number: 30 is now saved
+24528 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mkaymon@gmail.com
+24528 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mkaymon@gmail.com was successful
+24528 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+28451 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mytestspringboot54321@gmail.com
+28451 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mytestspringboot54321@gmail.com was successful
+28451 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
