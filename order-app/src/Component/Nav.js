@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import '../App.css';
 import { useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
+import { TbShoppingCart } from "react-icons/tb";
 
 const baseUrl = "http://localhost:3000/";
 
-export default function Nav() {
+export default function Nav(itemNumber) {
     const [username, setUsername] = useState("Login");
     const [account,setAccount] = useState('login');
-
-
-
 
     useEffect(() => {
         if(localStorage.getItem('token')!==null){
@@ -28,11 +26,11 @@ export default function Nav() {
     }
 
   return (
-    <nav className='navbar navbar-dark bg-dark navbar-expand-sm'>
+    <nav className='navbar navbar-muted bg-light navbar-expand-sm'>
         <div className="container">
 
 
-            <div className="collapse navbar-collapse d-grid justify-content-between" id="navbarNav">
+            <div className="collapse navbar-collapse d-grid justify-content-between h5" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <a href={baseUrl} className="nav-link active">
@@ -67,6 +65,13 @@ export default function Nav() {
                     <li className="nav-item">
                         <a href={baseUrl + "contact"} className="nav-link">
                             Contact Us
+                        </a>
+                    </li>
+                </ul>
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <a href={baseUrl +"cart"} className="nav-link">
+                        Items {itemNumber.itemNumber}-<TbShoppingCart />
                         </a>
                     </li>
                 </ul>
