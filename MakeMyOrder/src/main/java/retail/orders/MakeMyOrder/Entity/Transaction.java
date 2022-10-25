@@ -17,12 +17,14 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "itemId",updatable = false)
+    @JsonIgnoreProperties("transactions")
     private Item item;
 
     private int quantity;
 
     @ManyToOne
     @JoinColumn(name = "orderId",updatable = false)
+    @JsonIgnoreProperties("transactions")
     private Order order;
 
     public Transaction(Item item, int quantity) {

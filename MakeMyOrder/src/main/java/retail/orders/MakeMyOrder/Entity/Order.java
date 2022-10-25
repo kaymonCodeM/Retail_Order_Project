@@ -49,7 +49,7 @@ public class Order {
     private Address address;
 
     @OneToMany(mappedBy = "order")
-    @JsonIgnore
+    @JsonIgnoreProperties("order")
     private List<Transaction> transactions;
 
     @ManyToOne

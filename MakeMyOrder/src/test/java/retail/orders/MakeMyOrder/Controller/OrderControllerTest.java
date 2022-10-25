@@ -2,6 +2,8 @@ package retail.orders.MakeMyOrder.Controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.test.context.SpringBootTest;
 import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Service.ItemService;
@@ -48,20 +50,14 @@ class OrderControllerTest {
     }
 
     @Test
-    void getAllTransactions(){
+    void getAllTransactions() throws JSONException {
         List<Transaction> transactions = orderController.findAllTransactions();
-        for (Transaction transaction: transactions){
-            System.out.println(transaction);
-        }
         assertNotNull(transactions, "Add Order Failed");
     }
 
     @Test
     void getAllOrders(){
         List<Order> orders = orderController.findAllOrders();
-        for (Order o: orders){
-            System.out.println(o);
-        }
         assertNotNull(orders, "Add Order Failed");
     }
 }
