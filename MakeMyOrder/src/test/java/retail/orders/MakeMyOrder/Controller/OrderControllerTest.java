@@ -3,7 +3,6 @@ package retail.orders.MakeMyOrder.Controller;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.test.context.SpringBootTest;
 import retail.orders.MakeMyOrder.Entity.*;
 import retail.orders.MakeMyOrder.Service.ItemService;

@@ -23,7 +23,8 @@ public class OrderController {
 
     private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
 
-    private final String myEmail = "my.springboot.email@gmail.com";
+    @Autowired
+    private String myEmail;
 
     @GetMapping("/order/all")
     List<Order> findAllOrders(){

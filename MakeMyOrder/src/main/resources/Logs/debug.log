@@ -170,3 +170,63 @@ Failed message 1: com.sun.mail.smtp.SMTPSendFailedException: 550 5.4.5 Daily use
 ; message exceptions (1) are:
 Failed message 1: com.sun.mail.smtp.SMTPSendFailedException: 550 5.4.5 Daily user sending quota exceeded. j17-20020a05600c191100b003b47b913901sm3138243wmq.1 - gsmtp
 
+1675 [main] INFO  r.o.M.C.OrderControllerTest - Starting OrderControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 4000 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1675 [main] DEBUG r.o.M.C.OrderControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1675 [main] INFO  r.o.M.C.OrderControllerTest - No active profile set, falling back to 1 default profile: "default"
+14240 [main] INFO  r.o.M.C.OrderControllerTest - Started OrderControllerTest in 13.1 seconds (JVM running for 16.093)
+15275 [main] DEBUG r.o.M.MakeMyOrderApplication - Payment number 27 is now saved
+15275 [main] DEBUG r.o.M.MakeMyOrderApplication - Address number 27 is now saved
+15275 [main] DEBUG r.o.M.MakeMyOrderApplication - Contact number 27 is now saved
+15385 [main] DEBUG r.o.M.MakeMyOrderApplication - Order file number 27 is now created file path: src/main/resources/RetailOrders/Kaymon/order27.txt
+15510 [main] DEBUG r.o.M.MakeMyOrderApplication - Order number 27 is now saved
+15652 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+15714 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 51 is now saved
+15746 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+15903 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 52 is now saved
+15903 [main] DEBUG r.o.M.MakeMyOrderApplication - order number: 27 is now saved
+23091 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mkaymon@gmail.com
+23091 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mkaymon@gmail.com was successful
+23091 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+26511 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: my.springboot.email@gmail.com
+26511 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: my.springboot.email@gmail.com was successful
+26511 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+1584 [main] INFO  r.o.M.C.OrderControllerTest - Starting OrderControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 10640 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1584 [main] DEBUG r.o.M.C.OrderControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1584 [main] INFO  r.o.M.C.OrderControllerTest - No active profile set, falling back to 1 default profile: "default"
+10426 [main] INFO  r.o.M.C.OrderControllerTest - Started OrderControllerTest in 9.285 seconds (JVM running for 11.595)
+10991 [main] DEBUG r.o.M.MakeMyOrderApplication - Payment number 28 is now saved
+11007 [main] DEBUG r.o.M.MakeMyOrderApplication - Address number 28 is now saved
+11007 [main] DEBUG r.o.M.MakeMyOrderApplication - Contact number 28 is now saved
+11101 [main] DEBUG r.o.M.MakeMyOrderApplication - Order file number 28 is now created file path: src/main/resources/RetailOrders/Kaymon/order28.txt
+11195 [main] DEBUG r.o.M.MakeMyOrderApplication - Order number 28 is now saved
+11274 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+11305 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 53 is now saved
+11446 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+11446 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 54 is now saved
+11446 [main] DEBUG r.o.M.MakeMyOrderApplication - order number: 28 is now saved
+15669 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mkaymon@gmail.com
+15669 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mkaymon@gmail.com was successful
+15669 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+19040 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: my.springboot.email@gmail.com
+19040 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: my.springboot.email@gmail.com was successful
+19040 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+2446 [main] INFO  r.o.M.C.OrderControllerTest - Starting OrderControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 11912 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+2446 [main] DEBUG r.o.M.C.OrderControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+2446 [main] INFO  r.o.M.C.OrderControllerTest - No active profile set, falling back to 1 default profile: "default"
+20366 [main] INFO  r.o.M.C.OrderControllerTest - Started OrderControllerTest in 18.829 seconds (JVM running for 22.064)
+21195 [main] DEBUG r.o.M.MakeMyOrderApplication - Payment number 29 is now saved
+21211 [main] DEBUG r.o.M.MakeMyOrderApplication - Address number 29 is now saved
+21211 [main] DEBUG r.o.M.MakeMyOrderApplication - Contact number 29 is now saved
+21370 [main] DEBUG r.o.M.MakeMyOrderApplication - Order file number 29 is now created file path: src/main/resources/RetailOrders/Kaymon/order29.txt
+21511 [main] DEBUG r.o.M.MakeMyOrderApplication - Order number 29 is now saved
+21527 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+21574 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 55 is now saved
+21652 [main] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+21729 [main] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 56 is now saved
+21729 [main] DEBUG r.o.M.MakeMyOrderApplication - order number: 29 is now saved
+32305 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mkaymon@gmail.com
+32305 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mkaymon@gmail.com was successful
+32305 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+36028 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mytestspringboot54321@gmail.com
+36028 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mytestspringboot54321@gmail.com was successful
+36028 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully

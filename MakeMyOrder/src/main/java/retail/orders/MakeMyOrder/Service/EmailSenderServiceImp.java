@@ -3,6 +3,7 @@ package retail.orders.MakeMyOrder.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.nio.file.Path;
 public class EmailSenderServiceImp implements EmailSenderService{
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private MailSender javaMailSender;
 
 
     private Logger log = LoggerFactory.getLogger(MakeMyOrderApplication.class);
@@ -23,7 +24,6 @@ public class EmailSenderServiceImp implements EmailSenderService{
     @Override
     public String sendEmail(String toEmail,String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("my.springboot.email@gmail.com");
         message.setTo(toEmail);
         message.setSubject(subject);
         message.setText(body);
