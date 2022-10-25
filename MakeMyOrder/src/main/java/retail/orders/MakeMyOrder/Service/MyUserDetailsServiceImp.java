@@ -43,19 +43,20 @@ public class MyUserDetailsServiceImp implements MyUserDetailsService{
     }
 
     @Override
-    public User addUser(User user) {
+    public String addUser(User user) {
 
         Optional<User> u = userRepository.findByUsername(user.getUsername());
 
-        String passwordEncode = passwordEncoder.encode(user.getPassword());
-        user.setPassword(passwordEncode);
-
         if(u.isEmpty()){
+            String passwordEncode = passwordEncoder.encode(user.getPassword());
+            user.setPassword(passwordEncode);
+
             log.debug("User is now saved successfully");
-            return userRepository.save(user);
+            userRepository.save(user);
+            return "New user Saved Successfully";
         }
         log.error("User was not created");
-        return null;
+        return "User is already in the System";
     }
 
     @Override

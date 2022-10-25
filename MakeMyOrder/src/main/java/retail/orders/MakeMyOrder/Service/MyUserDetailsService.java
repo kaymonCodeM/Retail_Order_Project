@@ -10,7 +10,7 @@ public interface MyUserDetailsService extends UserDetailsService {
 
     List<User> findAllUsers();
     User getUserByUsername(String username);
-    User addUser(User user);
+    String addUser(User user);
 
     User updateUser(User user);
     User getUserById(long userId);

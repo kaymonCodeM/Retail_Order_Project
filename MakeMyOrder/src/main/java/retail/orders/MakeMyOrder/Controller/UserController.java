@@ -34,7 +34,7 @@ public class UserController {
         return myUserDetailsService.findAllUsers();
     }
     @PostMapping("/user/create")
-    User addUser(@RequestBody User user){
+    String addUser(@RequestBody User user){
 
         return myUserDetailsService.addUser(user);
     }

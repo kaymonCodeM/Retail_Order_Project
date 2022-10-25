@@ -250,3 +250,35 @@ Failed message 1: com.sun.mail.smtp.SMTPSendFailedException: 550 5.4.5 Daily use
 28451 [main] DEBUG r.o.M.MakeMyOrderApplication - Message Successful to: mytestspringboot54321@gmail.com
 28451 [main] DEBUG r.o.M.MakeMyOrderApplication - Order summery to: mytestspringboot54321@gmail.com was successful
 28451 [main] INFO  r.o.M.MakeMyOrderApplication - Email order details successfully
+1331 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 9564 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1331 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1331 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+9942 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 9.4 seconds (JVM running for 10.533)
+1391 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 2372 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1392 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1392 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+11206 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 10.555 seconds (JVM running for 11.824)
+1469 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 14156 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1472 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1472 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+9631 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 8.975 seconds (JVM running for 10.094)
+1241 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 780 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1257 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1257 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+8783 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 8.188 seconds (JVM running for 9.217)
+161851 [http-nio-8080-exec-8] DEBUG r.o.M.MakeMyOrderApplication - User is now saved successfully
+1177 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 14180 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1177 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1177 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+8327 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 7.739 seconds (JVM running for 8.73)
+1159 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 4864 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1159 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1159 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+8556 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 8.018 seconds (JVM running for 8.975)
+26601 [http-nio-8080-exec-2] DEBUG r.o.M.MakeMyOrderApplication - User is now saved successfully
+1243 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 4432 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1259 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1259 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+10389 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 9.737 seconds (JVM running for 10.825)
+113138 [http-nio-8080-exec-2] ERROR r.o.M.MakeMyOrderApplication - User was not created
+249037 [http-nio-8080-exec-5] ERROR r.o.M.MakeMyOrderApplication - User was not created
