@@ -5,6 +5,18 @@ const BASE_URL = 'http://localhost:8080';
 
 class Service {
 
+    calculateItems = () =>{
+      if (localStorage.getItem('transactions') !== null) {
+        let data = JSON.parse(localStorage.getItem('transactions'));
+        console.log(data);
+        if (data !== null) {
+            let res = data.reduce((sum, n) => sum = sum + n.quantity, 0);
+            return res;
+        }
+      }
+      return 0;
+    }
+
     loginAdmin = async (adminName, password) => {
         const res = await fetch(BASE_URL + "/admin", {
           method: 'post',
