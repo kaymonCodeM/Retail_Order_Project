@@ -1,14 +1,26 @@
 import { Buffer } from "buffer";
+import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080';
-// const auth = { headers: { 'Authorization': localStorage.getItem('token') } };
+
+//const auth = localStorage.getItem('token');
 
 class Service {
+
+    addTransaction = (item,quantity) =>{
+      if(localStorage.getItem('transactions') == null){
+        localStorage.setItem('transactions',JSON.stringify([{item,quantity}]));
+      }else{
+        const arr = JSON.parse(localStorage.getItem('transactions'));
+        arr.push({item,quantity});
+        localStorage.setItem('transactions',JSON.stringify(arr));
+      }
+    }
 
     calculateItems = () =>{
       if (localStorage.getItem('transactions') !== null) {
         let data = JSON.parse(localStorage.getItem('transactions'));
-        console.log(data);
+
         if (data !== null) {
             let res = data.reduce((sum, n) => sum = sum + n.quantity, 0);
             return res;
@@ -63,6 +75,16 @@ class Service {
     
         let data = await res.text();
         return data;
+      }
+
+      getItems = async() => {
+        let data = await axios.get(BASE_URL+"/item/all").then(data=>data);
+        return data.data;
+      }
+
+      getItemById = async (itemId) =>{
+        let data = await axios.get(BASE_URL+"/item/" + itemId).then(data=>data);
+        return data.data;
       }
 
 

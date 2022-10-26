@@ -20,11 +20,23 @@ import UserAccount from "./WebPages/UserAccount";
 import { Route, Routes } from "react-router-dom";
 import jwt_decode from 'jwt-decode';
 import Contact from "./WebPages/Contact";
+import ItemView from "./WebPages/ItemView";
+import Service from "./Services/Service";
+
+//https://react-icons.github.io/react-icons/
+//npm install axios
+//npm install --save reactstrap react react-dom
+//npm install react-icons
+//npm install react-router-dom
+//npm install npm
+//npm install bootstrap
+//npm install jwt-decode
 
 function App() {
 
   const [role,setRole] = useState([]);
   const [transactions,setTransactions] = useState([]);
+  const [item, setItem] = useState([]);
 
   const getTransactions = () =>{
     if(localStorage.getItem('transactions')!==null){
@@ -38,9 +50,21 @@ function App() {
     }
   }
 
+
+  const getItemId = async() =>{
+    const id = localStorage.getItem('itemId');
+    if(id!==null){
+      setItem(await Service.getItemById(id));
+
+    }else{
+      setItem([]);
+    }
+  }
+
   useEffect(()=>{
     getTransactions();
     getUserRoles();
+    getItemId();
 },[role,transactions]);
 
   return (
@@ -51,6 +75,7 @@ function App() {
           <Route path="/shop" element={<Shop />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path={"/ItemView"} element={item.length<=0 ? <Shop /> :<ItemView item={item}/>}></Route>
           <Route path="/orderForm" element={ transactions.length>0 ?
           <OrderForm /> : <Shop />
           }></Route>
@@ -62,7 +87,7 @@ function App() {
           ):(
             <AdminLogin />
           )}/>
-        </Routes>
+    </Routes>
   );
 }
 

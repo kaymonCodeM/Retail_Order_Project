@@ -28,7 +28,7 @@ public class Item {
     private double weight;
 
     @OneToMany(mappedBy = "item")
-    @JsonIgnoreProperties("item")
+    @JsonIgnore
     private List<Transaction> transactions;
 
 
