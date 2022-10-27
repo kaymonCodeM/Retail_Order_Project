@@ -3,7 +3,6 @@ import Nav from '../Component/Nav';
 import Service from '../Services/Service';
 
 export default function ItemView(item) {
-  const cartNum= useState(Service.calculateItems);
   const [quantity, setQuantity] = useState(1);
 
   const addToCart = (e) => {
@@ -16,7 +15,7 @@ export default function ItemView(item) {
 
   return (
     <div>
-      <Nav cartNum={cartNum}/>
+      <Nav />
       <div className='container'>
 
         <div className='row m-5 justify-content-between'>

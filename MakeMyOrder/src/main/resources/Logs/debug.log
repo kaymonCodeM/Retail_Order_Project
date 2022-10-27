@@ -10,3 +10,7 @@
 1242 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
 1243 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
 9061 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 8.491 seconds (JVM running for 9.81)
+1028 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 7004 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1031 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1032 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+9186 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 8.709 seconds (JVM running for 18.08)

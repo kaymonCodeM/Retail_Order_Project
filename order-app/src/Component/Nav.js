@@ -3,12 +3,15 @@ import '../App.css';
 import { useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { TbShoppingCart } from "react-icons/tb";
+import Service from '../Services/Service';
+//import Service from '../Services/Service';
 
 const baseUrl = "http://localhost:3000/";
 
-export default function Nav(cartNum) {
+export default function Nav() {
     const [username, setUsername] = useState("Login");
     const [account, setAccount] = useState('login');
+    const total = Service.calculateItems();
 
 
     useEffect(() => {
@@ -73,8 +76,8 @@ export default function Nav(cartNum) {
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <a href={baseUrl + "cart"} className="nav-link">
-                                {console.log(cartNum.cartNum)}
-                                Items {cartNum.cartNum}-<TbShoppingCart />
+                                {/* {console.log(cartNum.cartNum)} */}
+                                Items {total}-<TbShoppingCart />
                             </a>
                         </li>
                     </ul>

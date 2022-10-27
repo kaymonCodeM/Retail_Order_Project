@@ -5,7 +5,6 @@ import Service from '../Services/Service';
 
 export default function Shop() {
   const [itemsList,setItemsList] = useState([]);
-  const cartNum = useState(Service.calculateItems);
 
   const getListOfItems = async() =>{
     setItemsList(await Service.getItems());
@@ -17,7 +16,7 @@ export default function Shop() {
 }, []);
   return (
     <div>
-        <Nav cartNum={cartNum}/>
+        <Nav/>
         {<ItemsContent items={itemsList}/>}
     </div>
   )
