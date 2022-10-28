@@ -101,7 +101,7 @@ export default function CartContent() {
                   <td className='text-center'>
                     {transaction.quantity > transaction.item.item.quantity ?
                       <BiErrorCircle className='text-danger' style={{ width: "2.5rem", height: "2.5rem" }} />
-                      : ""
+                      : <BiErrorCircle className='text-danger' style={{ width: "2.5rem", height: "2.5rem",visibility:"hidden" }} />
                     }
                   </td>
                 </tr>
