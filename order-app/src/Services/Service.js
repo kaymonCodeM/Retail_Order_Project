@@ -28,6 +28,28 @@ class Service {
       localStorage.setItem('transactions', JSON.stringify(arr));
     }
   }
+  updateTransaction = (trans) =>{
+    if(trans.quantity===0){
+      this.removeTransaction(trans.item.item.itemId);
+    }
+
+    const arr = JSON.parse(localStorage.getItem('transactions'));
+
+    arr.map(elm => (
+      elm.item.item.itemId===trans.item.item.itemId ?
+        elm.quantity = trans.quantity : elm
+    ));
+    localStorage.setItem('transactions', JSON.stringify(arr));
+  }
+
+  removeTransaction(itemId){
+    const arr = JSON.parse(localStorage.getItem('transactions'));
+
+    const newArr = arr.filter(elm => {
+      return elm.item.item.itemId!==itemId;
+    });
+    localStorage.setItem('transactions', JSON.stringify(newArr));
+  }
 
   calculateItems = () => {
     if (localStorage.getItem('transactions') !== null) {
@@ -89,14 +111,13 @@ class Service {
     return data;
   }
 
-  getItems = async () => {
-    let data = await axios.get(BASE_URL + "/item/all").then(data => data);
-    return data.data;
+  getItems = () => {
+    return axios.get(BASE_URL + "/item/all");
   }
 
   getItemById = async (itemId) => {
     let data = await axios.get(BASE_URL + "/item/" + itemId).then(data => data);
-    return data.data;
+    return await data.data;
   }
 
 

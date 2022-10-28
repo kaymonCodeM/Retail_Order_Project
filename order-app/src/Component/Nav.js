@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
-import { useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { TbShoppingCart } from "react-icons/tb";
 import Service from '../Services/Service';
@@ -9,20 +8,9 @@ import Service from '../Services/Service';
 const baseUrl = "http://localhost:3000/";
 
 export default function Nav() {
-    const [username, setUsername] = useState("Login");
-    const [account, setAccount] = useState('login');
+    const username = localStorage.getItem('token')!==null ? jwt_decode(localStorage.getItem('token').replace('Bearer ', '')).sub : 'Login';
+    const account = username !=='Login' ? 'User Account' : 'Login';
     const total = Service.calculateItems();
-
-
-    useEffect(() => {
-        if (localStorage.getItem('token') !== null) {
-            setUsername(jwt_decode(localStorage.getItem('token').replace('Bearer ', '')).sub);
-            if ({ username } !== 'login') {
-                setAccount('UserAccount');
-            }
-        }
-
-    }, [username]);
 
     const logoutUser = () => {
         localStorage.removeItem('token');

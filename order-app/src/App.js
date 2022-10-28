@@ -65,7 +65,7 @@ function App() {
     getTransactions();
     getUserRoles();
     getItemId();
-},[role,transactions]);
+},[]);
 
   return (
     <Routes>
@@ -76,7 +76,7 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path={"/ItemView"} element={item.length<=0 ? <Shop /> :<ItemView item={item}/>}></Route>
-          <Route path="/orderForm" element={ transactions.length>0 ?
+          <Route path="/orderForm" element={ transactions.length>0 && localStorage.getItem('token')!==null ?
           <OrderForm /> : <Shop />
           }></Route>
           <Route path="/orderSummery" element={<OrderSummery />}></Route>

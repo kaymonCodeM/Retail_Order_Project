@@ -11,6 +11,7 @@ export default function ItemsContent(items) {
   return (
     <div className='container'>
       <div className='row'>
+        
 
         {items.items.map(item =>
           <div className="card m-5" style={{ width: "18rem" }} key={item.itemId}>
