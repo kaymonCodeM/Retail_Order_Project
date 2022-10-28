@@ -16,7 +16,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>${LOG_FILE}/debug.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>${LOG_FILE}/debug.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history capped at 3GB total size -->
             <maxHistory>30</maxHistory>
             <totalSizeCap>3GB</totalSizeCap>
@@ -30,7 +30,7 @@
     <appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}/error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_FILE}/error.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>${LOG_FILE}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
             <totalSizeCap>3GB</totalSizeCap>
         </rollingPolicy>

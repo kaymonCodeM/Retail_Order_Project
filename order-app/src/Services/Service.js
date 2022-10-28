@@ -9,10 +9,9 @@ class Service {
 
   addTransaction = (item, quantity) => {
     if (localStorage.getItem('transactions') === null) {
-      localStorage.setItem('transactions', JSON.stringify([{ item, quantity }]));
+      localStorage.setItem('transactions', JSON.stringify([{ item, quantity}]));
     } else {
       const arr = JSON.parse(localStorage.getItem('transactions'));
-      console.log(arr);
 
       const isIn = arr.some(elm => {
         if(elm.item.item.itemId===item.item.itemId){
@@ -24,7 +23,7 @@ class Service {
       });
 
       if (!isIn) {
-        arr.push({ item, quantity });
+        arr.push({ item, quantity});
       }
       localStorage.setItem('transactions', JSON.stringify(arr));
     }
