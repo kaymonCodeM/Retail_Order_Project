@@ -1,0 +1,4 @@
+3592 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 12492 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+3712 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+3713 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+20346 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 18.704 seconds (JVM running for 31.901)

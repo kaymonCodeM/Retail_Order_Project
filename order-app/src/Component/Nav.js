@@ -52,7 +52,7 @@ export default function Nav() {
                                 </a>
                                 </li>
                                 <li><a href={baseUrl + "newUser"} className="dropdown-item">Create New Account</a></li>
-                                <li><div className="dropdown-item" onClick={() => logoutUser()}>Logout</div></li>
+                                <li><div style={{cursor: "pointer"}} className="dropdown-item" onClick={() => logoutUser()}>Logout</div></li>
                             </ul>
                         </li>
                         <li className="nav-item">

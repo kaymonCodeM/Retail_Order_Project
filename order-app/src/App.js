@@ -34,36 +34,21 @@ import Service from "./Services/Service";
 
 function App() {
 
-  const [role,setRole] = useState([]);
-  const [transactions,setTransactions] = useState([]);
+  const role = localStorage.getItem('token')!==null ? jwt_decode(localStorage.getItem('token').replace('Bearer ','')).scope : [];
+  const transactions = localStorage.getItem('transactions')!==null ? localStorage.getItem("transactions") : [];
   const [item, setItem] = useState([]);
-
-  const getTransactions = () =>{
-    if(localStorage.getItem('transactions')!==null){
-      setTransactions(localStorage.getItem("transactions"));
-    }
-  }
-
-  const getUserRoles = () =>{
-    if(localStorage.getItem('token')!==null){
-      setRole(jwt_decode(localStorage.getItem('token').replace('Bearer ','')).scope);
-    }
-  }
 
 
   const getItemId = async() =>{
     const id = localStorage.getItem('itemId');
     if(id!==null){
-      setItem(await Service.getItemById(id));
-
+      Service.getItemById(id).then(data => setItem(data.data));
     }else{
       setItem([]);
     }
   }
 
   useEffect(()=>{
-    getTransactions();
-    getUserRoles();
     getItemId();
 },[]);
 

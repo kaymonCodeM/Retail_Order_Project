@@ -115,9 +115,8 @@ class Service {
     return axios.get(BASE_URL + "/item/all");
   }
 
-  getItemById = async (itemId) => {
-    let data = await axios.get(BASE_URL + "/item/" + itemId).then(data => data);
-    return await data.data;
+  getItemById = (itemId) => {
+    return axios.get(BASE_URL + "/item/" + itemId);
   }
 
 
