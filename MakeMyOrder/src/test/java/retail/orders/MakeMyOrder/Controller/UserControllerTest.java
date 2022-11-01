@@ -37,4 +37,10 @@ class UserControllerTest {
         User result = userController.updateUser(user);
         assertNotNull(result,"Test to add User failed");
     }
+
+    @Test
+    void getUserById(){
+        User user = userController.getUserById("9");
+        assertNotNull(user,"get user by Id failed");
+    }
 }

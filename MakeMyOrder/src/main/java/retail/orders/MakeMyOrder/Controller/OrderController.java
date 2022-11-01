@@ -67,13 +67,15 @@ public class OrderController {
     }
 
     @PostMapping("/order/add")
-    Order addOrder(@RequestBody Order order){
+    String addOrder(@RequestBody Order order){
         Order o =  orderService.saveOrder(order);
-
-        String subject = "ORDER Request from: " + order.getUser().getUsername();
-        log.info(emailSenderService.emailOrderDetails(o.getContact().getEmail(),subject,o.getOrderSummeryUrl()));
-        log.info(emailSenderService.emailOrderDetails(myEmail,subject,o.getOrderSummeryUrl()));
-        return o;
+        if(o!=null) {
+            String subject = "ORDER Request from: " + order.getUser().getUsername();
+            log.info(emailSenderService.emailOrderDetails(o.getContact().getEmail(),subject,o.getOrderSummeryUrl()));
+            log.info(emailSenderService.emailOrderDetails(myEmail,subject,o.getOrderSummeryUrl()));
+            return "Order Successful";
+        }
+        return "Order not Successful";
     }
 
     @GetMapping("/order/address/{orderId}")

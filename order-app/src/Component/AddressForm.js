@@ -63,7 +63,7 @@ export default function AddressForm(props) {
 
         <div className='d-flex flex-row justify-content-between'>
           <div className='col-11'>
-            <input type="text" className="form-control" id="State" aria-describedby="stateHelp" placeholder="state" required />
+            <input type="text" className="form-control" id="state" aria-describedby="stateHelp" placeholder="state" required />
           </div>
 
           <div>

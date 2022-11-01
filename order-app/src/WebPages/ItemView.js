@@ -7,7 +7,7 @@ export default function ItemView(item) {
 
   const addToCart = (e) => {
     e.preventDefault();
-    Service.addTransaction(item, quantity);
+    Service.addTransaction(item.item, quantity);
     localStorage.removeItem('itemId');
     window.location.href = "http://localhost:3000/shop";
   }

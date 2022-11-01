@@ -18,11 +18,11 @@ public class Address {
     @Column(updatable = false)
     private String streetAddress;
     @Column(updatable = false)
-    private String Country;
+    private String country;
     @Column(updatable = false)
     private String city;
     @Column(updatable = false)
-    private String State;
+    private String state;
     @Column(updatable = false)
     private String zip;
 
@@ -32,9 +32,9 @@ public class Address {
 
     public Address(String streetAddress, String country, String city, String state, String zip) {
         this.streetAddress = streetAddress;
-        Country = country;
+        this.country = country;
         this.city = city;
-        State = state;
+        this.state = state;
         this.zip = zip;
     }
 
@@ -58,11 +58,11 @@ public class Address {
     }
 
     public String getCountry() {
-        return Country;
+        return this.country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getCity() {
@@ -74,11 +74,11 @@ public class Address {
     }
 
     public String getState() {
-        return State;
+        return this.state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getZip() {
@@ -97,14 +97,16 @@ public class Address {
         this.order = order;
     }
 
+
+
     @Override
     public String toString() {
         return "Address{" +
                 "addressId=" + addressId +
                 ", streetAddress='" + streetAddress + '\'' +
-                ", Country='" + Country + '\'' +
+                ", Country='" + country + '\'' +
                 ", city='" + city + '\'' +
-                ", State='" + State + '\'' +
+                ", State='" + state + '\'' +
                 ", zip='" + zip + '\'' +
                 ", order=" + order +
                 '}';

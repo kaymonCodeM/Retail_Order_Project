@@ -60,7 +60,7 @@ export default function PaymentForm(props) {
 
       <div className='d-flex flex-row justify-content-between'>
         <div className='col-11'>
-          <input type="number" className="form-control" id="cvv" aria-describedby="cvvHelp" placeholder="cvv" required />
+          <input type="password" inputMode="numeric" maxLength={3} className="form-control" id="cvv" aria-describedby="cvvHelp" placeholder="cvv" required />
         </div>
 
         <div>

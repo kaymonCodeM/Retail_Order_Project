@@ -125,6 +125,7 @@ public class OrderServiceImp implements OrderService{
     public Order saveOrder(Order order) {
 
         order.setOrderDate(LocalDate.now());
+        List<Transaction> transactions = new ArrayList<>(order.getTransactions());
 
         Payment savePayment = paymentRepository.save(order.getPayment());
         Address saveAddress = addressRepository.save(order.getAddress());
@@ -145,7 +146,7 @@ public class OrderServiceImp implements OrderService{
         log.debug("Order number " + reSavedOrder.getOrderId() + " is now saved");
 
 
-        for (Transaction transaction: order.getTransactions()){
+        for (Transaction transaction: transactions){
 
             Item item = transaction.getItem();
             item.setQuantity(item.getQuantity()-transaction.getQuantity());
@@ -257,6 +258,7 @@ public class OrderServiceImp implements OrderService{
         }
 
         log.debug("Order number " + order.getOrderId() + " is now updated");
+
         return saveOrder(order);
     }
 

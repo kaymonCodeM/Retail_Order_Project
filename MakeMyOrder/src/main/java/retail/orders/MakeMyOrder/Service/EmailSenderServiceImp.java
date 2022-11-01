@@ -36,7 +36,7 @@ public class EmailSenderServiceImp implements EmailSenderService{
             String body = Files.readString(Path.of(orderUrl));
             log.debug(sendEmail(toEmail,subject,body));
         }catch (Exception e){
-            log.debug("Email to "+ toEmail + " was not sent");
+            log.error("Email to "+ toEmail + " was not sent");
             return "ERROR email order was not successful log" + e;
         }
         log.debug("Order summery to: " + toEmail+ " was successful");

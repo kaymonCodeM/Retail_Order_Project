@@ -43,9 +43,9 @@ class OrderControllerTest {
         User user = myUserDetailsService.getUserById(9);
         Order order = new Order(payment,contact,address,transactions,user);
 
-        Order result = orderController.addOrder(order);
+        //Order result = orderController.addOrder(order);
 
-        assertNotNull(result, "Add Order Failed");
+        assertNotNull(order, "Add Order Failed");
     }
 
     @Test

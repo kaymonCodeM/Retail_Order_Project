@@ -10,14 +10,14 @@ export default function CartContent() {
   const [errorMessage, setErrorMessage] = useState('Quantity is too high');
 
 
-  const deliveryCharge = transactions !== null ? transactions.reduce((a, b) => a = a + b.item.item.weight * b.quantity * .15, 0.0) : null
-  const total = transactions !== null ? transactions.reduce((a, b) => a = a += b.item.item.price * b.quantity, 0.0) + deliveryCharge : null
+  const deliveryCharge = transactions !== null ? transactions.reduce((a, b) => a = a + b.item.weight * b.quantity * .15, 0.0) : null
+  const total = transactions !== null ? transactions.reduce((a, b) => a = a += b.item.price * b.quantity, 0.0) + deliveryCharge : null
 
 
   const minus = (id) => {
     let t;
     transactions.map(trans => (
-      trans.item.item.itemId === id ?
+      trans.item.itemId === id ?
         t = trans : trans
     )
     )
@@ -29,7 +29,7 @@ export default function CartContent() {
   const plus = (id) => {
     let t;
     transactions.map(trans => (
-      trans.item.item.itemId === id ?
+      trans.item.itemId === id ?
         t = trans : trans
     )
     )
@@ -46,7 +46,7 @@ export default function CartContent() {
 
   const setAllError = (trans) => {
     setErrorMessageDisplay('visible')
-    setErrorMessage(trans.item.item.name + ' only has ' + trans.item.item.quantity + ' in stock')
+    setErrorMessage(trans.item.name + ' only has ' + trans.item.quantity + ' in stock')
   }
 
   const makeOrder = () => {
@@ -63,7 +63,7 @@ export default function CartContent() {
 
     if (transactions !== null) {
       transactions.map(trans => (
-        trans.item.item.quantity < trans.quantity ?
+        trans.item.quantity < trans.quantity ?
           setAllError(trans) : trans
       ))
     }
@@ -89,17 +89,17 @@ export default function CartContent() {
           {
             transactions !== null ?
               transactions.map(transaction =>
-                <tr key={transaction.item.item.itemId} style={{ verticalAlign: "middle" }}>
+                <tr key={transaction.item.itemId} style={{ verticalAlign: "middle" }}>
                   <th scope='row'>
-                    <img style={{ width: "5rem", height: "5rem" }} src={require('../Images/' + transaction.item.item.type + '/' + transaction.item.item.imageUrl)} alt={transaction.item.item.name + " image"} />
+                    <img style={{ width: "5rem", height: "5rem" }} src={require('../Images/' + transaction.item.type + '/' + transaction.item.imageUrl)} alt={transaction.item.name + " image"} />
                   </th>
-                  <td>{transaction.item.item.name}</td>
-                  <td>{transaction.item.item.description}</td>
-                  <td><i onClick={() => minus(transaction.item.item.itemId)} ><AiFillMinusCircle className='text-success' style={{ width: "1.5rem", height: "1.5rem", cursor: "pointer" }} /></i>      -{transaction.quantity}-      <i onClick={() => plus(transaction.item.item.itemId)}><AiFillPlusCircle className='text-primary' style={{ width: "1.5rem", height: "1.5rem", cursor: "pointer" }} /></i></td>
-                  <td>${parseFloat(transaction.item.item.price * transaction.quantity).toFixed(2)}</td>
-                  <td className='text-center'><MdDelete style={{ width: "1.5rem", height: "1.5rem", cursor: "pointer" }} onClick={() => deleteTransaction(transaction.item.item.itemId)} /></td>
+                  <td>{transaction.item.name}</td>
+                  <td>{transaction.item.description}</td>
+                  <td><i onClick={() => minus(transaction.item.itemId)} ><AiFillMinusCircle className='text-success' style={{ width: "1.5rem", height: "1.5rem", cursor: "pointer" }} /></i>      -{transaction.quantity}-      <i onClick={() => plus(transaction.item.itemId)}><AiFillPlusCircle className='text-primary' style={{ width: "1.5rem", height: "1.5rem", cursor: "pointer" }} /></i></td>
+                  <td>${parseFloat(transaction.item.price * transaction.quantity).toFixed(2)}</td>
+                  <td className='text-center'><MdDelete style={{ width: "1.5rem", height: "1.5rem", cursor: "pointer" }} onClick={() => deleteTransaction(transaction.item.itemId)} /></td>
                   <td className='text-center'>
-                    {transaction.quantity > transaction.item.item.quantity ?
+                    {transaction.quantity > transaction.item.quantity ?
                       <BiErrorCircle className='text-danger' style={{ width: "2.5rem", height: "2.5rem" }} />
                       : <BiErrorCircle className='text-danger' style={{ width: "2.5rem", height: "2.5rem",visibility:"hidden" }} />
                     }

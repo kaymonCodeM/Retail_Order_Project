@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080';
 
-//const auth = localStorage.getItem('token');
+const auth = localStorage.getItem('token');
 
 class Service {
 
@@ -14,7 +14,7 @@ class Service {
       const arr = JSON.parse(localStorage.getItem('transactions'));
 
       const isIn = arr.some(elm => {
-        if(elm.item.item.itemId===item.item.itemId){
+        if(elm.item.itemId===item.itemId){
           elm.quantity += quantity;
           return true;
         }else{
@@ -30,13 +30,13 @@ class Service {
   }
   updateTransaction = (trans) =>{
     if(trans.quantity===0){
-      this.removeTransaction(trans.item.item.itemId);
+      this.removeTransaction(trans.item.itemId);
     }
 
     const arr = JSON.parse(localStorage.getItem('transactions'));
 
     arr.map(elm => (
-      elm.item.item.itemId===trans.item.item.itemId ?
+      elm.item.itemId===trans.item.itemId ?
         elm.quantity = trans.quantity : elm
     ));
     localStorage.setItem('transactions', JSON.stringify(arr));
@@ -46,7 +46,7 @@ class Service {
     const arr = JSON.parse(localStorage.getItem('transactions'));
 
     const newArr = arr.filter(elm => {
-      return elm.item.item.itemId!==itemId;
+      return elm.item.itemId!==itemId;
     });
     localStorage.setItem('transactions', JSON.stringify(newArr));
   }
@@ -77,6 +77,12 @@ class Service {
     }
     const token = await this.getToken(adminName, password);
     return token;
+  }
+
+  getUserByUserId = (userId) =>{
+    return axios.get(BASE_URL + "/user/id/" +userId, {
+      headers:{'Authorization': auth}
+    })
   }
 
   createUser = async (username, password) => {
@@ -117,6 +123,16 @@ class Service {
 
   getItemById = (itemId) => {
     return axios.get(BASE_URL + "/item/" + itemId);
+  }
+
+  makeOrder = async(payment,contact,address,transactions,user) =>{
+    const res = await fetch(BASE_URL + '/order/add', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json', 'My-Custom-Header': 'foobar','Authorization': auth },
+      body: JSON.stringify({ payment:payment, contact:contact, address:address,transactions:transactions,user:user })
+    })
+    console.log(res)
+    return res;
   }
 
 
