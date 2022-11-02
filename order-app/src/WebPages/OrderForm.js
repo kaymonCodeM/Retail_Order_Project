@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Nav from '../Component/Nav'
 import AddressForm from '../Component/AddressForm'
 import ContactForm from '../Component/ContactForm'
 import PaymentForm from '../Component/PaymentForm'
-import Service from '../Services/Service'
-import jwt_decode from 'jwt-decode';
 
 export default function OrderForm() {
   const [firstNameError,setFirstNameError] = useState('hidden');
@@ -24,19 +22,11 @@ export default function OrderForm() {
   const [cvvError,setCvvError] = useState('hidden');
   const [cardZipError,setCardZipError] = useState('hidden');
 
-  const [user,setUser] = useState({});
-  const transactions = JSON.parse(localStorage.getItem('transactions'));
-
   
 
   let contact = {};
   let address = {};
   let payment = {};
-
-  useEffect(()=>{
-    const id = jwt_decode(localStorage.getItem('token')).jti;
-    Service.getUserByUserId(id).then(data=>setUser(data.data));
-  },[])
 
 
 
@@ -65,12 +55,12 @@ export default function OrderForm() {
     const paymentIn = setupPayment(cardHolder.value,cardNumber.value,expirationDate.value,cvv.value,cardZip.value);
 
     if(contactIn && addressIn && paymentIn){
+      localStorage.setItem('payment',JSON.stringify(payment));
+      localStorage.setItem('contact',JSON.stringify(contact));
+      localStorage.setItem('address',JSON.stringify(address));
 
+      window.location.href = "http://localhost:3000/summery"
 
-      let order = JSON.stringify({payment:payment,contact:contact,address:address,transactions:transactions,user:user});
-      console.log(order);
-
-      Service.makeOrder(payment,contact,address,transactions,user);
     }
   }
 

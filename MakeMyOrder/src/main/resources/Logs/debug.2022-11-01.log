@@ -1,0 +1,200 @@
+1114 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 8728 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1127 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1129 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+10406 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 9.987 seconds (JVM running for 18.854)
+1857 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 9604 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1864 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1865 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+12586 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 11.588 seconds (JVM running for 13.384)
+1628 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 2996 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1628 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1628 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+12846 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 12.173 seconds (JVM running for 13.297)
+1693 [main] INFO  r.o.M.Controller.UserControllerTest - Starting UserControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 3776 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1700 [main] DEBUG r.o.M.Controller.UserControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1700 [main] INFO  r.o.M.Controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+11179 [main] INFO  r.o.M.Controller.UserControllerTest - Started UserControllerTest in 9.99 seconds (JVM running for 12.259)
+1444 [main] INFO  r.o.M.Controller.UserControllerTest - Starting UserControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 17480 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1444 [main] DEBUG r.o.M.Controller.UserControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1444 [main] INFO  r.o.M.Controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+12077 [main] INFO  r.o.M.Controller.UserControllerTest - Started UserControllerTest in 11.041 seconds (JVM running for 13.146)
+1595 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 2976 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1595 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1611 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+11108 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 10.17 seconds (JVM running for 11.606)
+244351 [http-nio-8080-exec-5] DEBUG r.o.M.MakeMyOrderApplication - User id: 6 deleted successfully
+2190 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 7580 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+2205 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+2205 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+10580 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 9.692 seconds (JVM running for 11.084)
+1178 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 18604 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1193 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1193 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+7530 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 6.928 seconds (JVM running for 8.029)
+1080 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 18136 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1080 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1080 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+7696 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 7.195 seconds (JVM running for 8.056)
+1257 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 20608 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1257 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1257 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+7863 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 7.354 seconds (JVM running for 9.082)
+1271 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 17552 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1271 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1287 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+8463 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 7.74 seconds (JVM running for 8.84)
+1636 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 18068 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1651 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1651 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+13405 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 12.49 seconds (JVM running for 13.963)
+12234157 [http-nio-8080-exec-8] DEBUG r.o.M.MakeMyOrderApplication - Payment number 31 is now saved
+12234219 [http-nio-8080-exec-8] DEBUG r.o.M.MakeMyOrderApplication - Address number 31 is now saved
+12234219 [http-nio-8080-exec-8] DEBUG r.o.M.MakeMyOrderApplication - Contact number 31 is now saved
+12720876 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Payment number 33 is now saved
+12720877 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Address number 32 is now saved
+12720877 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Contact number 32 is now saved
+12722136 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Order file number 32 is now created file path: src/main/resources/RetailOrders/Kaymon/order32.txt
+12723080 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Order number 32 is now saved
+12823587 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Payment number 34 is now saved
+12823601 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Address number 33 is now saved
+12823601 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Contact number 33 is now saved
+12823723 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Order file number 33 is now created file path: src/main/resources/RetailOrders/Kaymon/order33.txt
+12823733 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Order number 33 is now saved
+13795589 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Payment number 35 is now saved
+13795589 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Address number 34 is now saved
+13795590 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Contact number 34 is now saved
+13795660 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order file number 34 is now created file path: src/main/resources/RetailOrders/Kaymon/order34.txt
+13795681 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order number 34 is now saved
+2105 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 11632 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+2105 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+2105 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+13856 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 12.969 seconds (JVM running for 15.974)
+151499 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Payment number 36 is now saved
+151499 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Address number 35 is now saved
+151499 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Contact number 35 is now saved
+151588 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Order file number 35 is now created file path: src/main/resources/RetailOrders/Kaymon/order35.txt
+151638 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Order number 35 is now saved
+1176 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 14824 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1176 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1191 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+8879 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 8.268 seconds (JVM running for 9.27)
+75070 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Payment number 37 is now saved
+75071 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Address number 36 is now saved
+75071 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Contact number 36 is now saved
+75139 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order file number 36 is now created file path: src/main/resources/RetailOrders/Kaymon/order36.txt
+75164 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order number 36 is now saved
+1277 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 9596 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1280 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1280 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+12488 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 11.88 seconds (JVM running for 13.02)
+1421 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 2220 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1421 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1421 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+20869 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 20.135 seconds (JVM running for 42.317)
+74240 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Payment number 38 is now saved
+111977 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Address number 37 is now saved
+112821 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Contact number 37 is now saved
+120152 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Order file number 37 is now created file path: src/main/resources/RetailOrders/Kaymon/order37.txt
+123661 [http-nio-8080-exec-4] DEBUG r.o.M.MakeMyOrderApplication - Order number 37 is now saved
+190607 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Payment number 39 is now saved
+196245 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Address number 38 is now saved
+196245 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Contact number 38 is now saved
+196305 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Order file number 38 is now created file path: src/main/resources/RetailOrders/Kaymon/order38.txt
+196338 [http-nio-8080-exec-6] DEBUG r.o.M.MakeMyOrderApplication - Order number 38 is now saved
+663768 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Payment number 40 is now saved
+690119 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Address number 39 is now saved
+694652 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Contact number 39 is now saved
+755013 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Order file number 39 is now created file path: src/main/resources/RetailOrders/Kaymon/order39.txt
+871613 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Order number 39 is now saved
+881226 [http-nio-8080-exec-9] DEBUG r.o.M.MakeMyOrderApplication - Payment number 41 is now saved
+904346 [http-nio-8080-exec-9] DEBUG r.o.M.MakeMyOrderApplication - Address number 40 is now saved
+905581 [http-nio-8080-exec-9] DEBUG r.o.M.MakeMyOrderApplication - Contact number 40 is now saved
+933594 [http-nio-8080-exec-9] DEBUG r.o.M.MakeMyOrderApplication - Order file number 40 is now created file path: src/main/resources/RetailOrders/Kaymon/order40.txt
+1096329 [http-nio-8080-exec-9] DEBUG r.o.M.MakeMyOrderApplication - Order number 40 is now saved
+1779 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 6700 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1779 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1779 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+11568 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 10.565 seconds (JVM running for 12.229)
+19908 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Payment number 42 is now saved
+25523 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Address number 41 is now saved
+25524 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Contact number 41 is now saved
+25605 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order file number 41 is now created file path: src/main/resources/RetailOrders/Kaymon/order41.txt
+25629 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order number 41 is now saved
+1423 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 19520 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1423 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1423 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+11940 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 11.273 seconds (JVM running for 12.606)
+17199 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Payment number 43 is now saved
+21616 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Address number 42 is now saved
+21616 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Contact number 42 is now saved
+21689 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order file number 42 is now created file path: src/main/resources/RetailOrders/Kaymon/order42.txt
+21715 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order number 42 is now saved
+73655 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+73733 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 59 is now saved
+115237 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+115315 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 60 is now saved
+115315 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - order number: 42 is now saved
+1078 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 21404 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1078 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1078 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+7930 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 7.445 seconds (JVM running for 8.302)
+29284 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Payment number 44 is now saved
+29284 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Address number 43 is now saved
+29284 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Contact number 43 is now saved
+29362 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order file number 43 is now created file path: src/main/resources/RetailOrders/Kaymon/order43.txt
+29427 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order number 43 is now saved
+29470 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+29501 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 61 is now saved
+29517 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+29533 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 62 is now saved
+29533 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - order number: 43 is now saved
+1159 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 14904 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1159 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1159 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+11253 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 10.675 seconds (JVM running for 11.644)
+1160 [main] INFO  r.o.M.Controller.ItemControllerTest - Starting ItemControllerTest using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 22432 (started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1160 [main] DEBUG r.o.M.Controller.ItemControllerTest - Running with Spring Boot v2.7.4, Spring v5.3.23
+1160 [main] INFO  r.o.M.Controller.ItemControllerTest - No active profile set, falling back to 1 default profile: "default"
+8081 [main] INFO  r.o.M.Controller.ItemControllerTest - Started ItemControllerTest in 7.221 seconds (JVM running for 9.217)
+8300 [main] DEBUG r.o.M.MakeMyOrderApplication - Item id: 1 is now updated
+8519 [main] DEBUG r.o.M.MakeMyOrderApplication - Item id: 2 is now updated
+1142 [main] INFO  r.o.M.MakeMyOrderApplication - Starting MakeMyOrderApplication using Java 18.0.2 on LAPTOP-P8GSHFSD with PID 7824 (D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder\target\classes started by kaymo in D:\vsCodeProjects\Retail_Order_Project\MakeMyOrder)
+1142 [main] DEBUG r.o.M.MakeMyOrderApplication - Running with Spring Boot v2.7.4, Spring v5.3.23
+1142 [main] INFO  r.o.M.MakeMyOrderApplication - No active profile set, falling back to 1 default profile: "default"
+7833 [main] INFO  r.o.M.MakeMyOrderApplication - Started MakeMyOrderApplication in 7.315 seconds (JVM running for 8.214)
+294180 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Payment number 45 is now saved
+294180 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Address number 44 is now saved
+294180 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Contact number 44 is now saved
+294352 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Order file number 44 is now created file path: src/main/resources/RetailOrders/Hannah/order44.txt
+294368 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Order number 44 is now saved
+294383 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+294446 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 63 is now saved
+294446 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+294477 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 64 is now saved
+294477 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - order number: 44 is now saved
+300103 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Email to kaymonCodeM@outlook.com was not sent
+300103 [http-nio-8080-exec-7] INFO  r.o.M.MakeMyOrderApplication - ERROR email order was not successful logorg.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials b13-20020a5d550d000000b002366b17ca8bsm12780552wrv.108 - gsmtp
+
+302092 [http-nio-8080-exec-7] DEBUG r.o.M.MakeMyOrderApplication - Email to mytestspringboot54321@gmail.com was not sent
+302092 [http-nio-8080-exec-7] INFO  r.o.M.MakeMyOrderApplication - ERROR email order was not successful logorg.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials f7-20020adff987000000b00236722ebe66sm10901789wrr.75 - gsmtp
+
+547680 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Payment number 46 is now saved
+547680 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Address number 45 is now saved
+547680 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Contact number 45 is now saved
+547758 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order file number 45 is now created file path: src/main/resources/RetailOrders/Kaymon/order45.txt
+547774 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Order number 45 is now saved
+547774 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Item number 1 quantity is now updated
+547847 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 65 is now saved
+547849 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Item number 2 quantity is now updated
+547864 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Transaction number 66 is now saved
+547864 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - order number: 45 is now saved
+671281 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Email to kaymonCodeM@outlook.com was not sent
+671281 [http-nio-8080-exec-1] INFO  r.o.M.MakeMyOrderApplication - ERROR email order was not successful logorg.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g15-20020a05600c4ecf00b003c6f426467fsm12705835wmq.40 - gsmtp
+
+673421 [http-nio-8080-exec-1] DEBUG r.o.M.MakeMyOrderApplication - Email to mytestspringboot54321@gmail.com was not sent
+673421 [http-nio-8080-exec-1] INFO  r.o.M.MakeMyOrderApplication - ERROR email order was not successful logorg.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials i203-20020a1c3bd4000000b003cf7292c553sm43589wma.13 - gsmtp
+
