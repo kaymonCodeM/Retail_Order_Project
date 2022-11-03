@@ -1,0 +1,46 @@
+body{
+    background: #eee;
+}
+
+#side_nav{
+    background: #000;
+    min-width: 18rem;
+    max-width: 18rem;
+    transition: all .35s;
+}
+
+.content{
+    min-height:100vh;
+    width:100%;
+}
+
+hr.h-color{
+    background: #eee;
+    height: .1rem;
+}
+
+.sidebar li.active{
+    background: #eee;
+    border-radius: 8px;
+}
+
+.sidebar li.active div, .sidebar li.active div:hover{
+    color: #000;
+}
+
+.sidebar li div{
+    color: #fff;
+    cursor: pointer;
+}
+
+@media(max-width:767px){
+    #side_nav{
+        margin-left: -18rem;
+        position: fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+    #side_nav.active{
+        margin-left: 0;
+    }
+}

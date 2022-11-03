@@ -1,11 +1,10 @@
 import React from 'react'
-import Nav from '../Component/Nav';
+import SideNav from '../Component/SideNav';
 
 export default function UserAccount() {
   return (
     <div>
-      <Nav />
-      UserAccount
+      <SideNav />
     </div>
   )
 }

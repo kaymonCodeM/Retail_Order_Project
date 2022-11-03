@@ -25,6 +25,7 @@ import Service from "./Services/Service";
 
 //https://react-icons.github.io/react-icons/
 //npm install axios
+//npm i react-toastify
 //npm install --save reactstrap react react-dom
 //npm install react-bootstrap
 //npm install react-icons

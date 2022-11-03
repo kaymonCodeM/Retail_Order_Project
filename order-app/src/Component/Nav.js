@@ -47,7 +47,7 @@ export default function Nav() {
                                 {username}
                             </div>
                             <ul className="dropdown-menu" aria-labelledby="Login">
-                                <li><a href={baseUrl + account} className="dropdown-item">
+                                <li><a href={baseUrl + (account==='User Account' ?'userAccount':'login')} className="dropdown-item">
                                     {account}
                                 </a>
                                 </li>

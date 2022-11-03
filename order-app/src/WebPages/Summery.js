@@ -92,8 +92,7 @@ export default function Summery(props) {
           <Modal.Title className='text-success'>Order Successful</Modal.Title>
         </Modal.Header>
         <Modal.Body className='text-success'>
-          Order was made successfully.
-          Look at your email for further details.
+          Thank you for your order!
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => goHome()}>
