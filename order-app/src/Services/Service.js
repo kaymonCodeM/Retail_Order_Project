@@ -125,6 +125,10 @@ class Service {
     return axios.get(BASE_URL + "/item/" + itemId);
   }
 
+  getOrderByUserId = (userId) => {
+    return axios.get(BASE_URL + "/order/byUser/" + userId,{headers:{'Authorization':auth}});
+  }
+
   makeOrder = async(payment,contact,address,transactions,user) =>{
     const res = await fetch(BASE_URL + '/order/add', {
       method: 'post',

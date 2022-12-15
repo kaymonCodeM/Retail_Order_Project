@@ -7,7 +7,7 @@ export default function NewNav() {
         let sidebar = document.querySelector('.sidebar')
         sidebar.classList.add('active');
     }
-    
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +22,7 @@ export default function NewNav() {
                     <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <ul className="navbar-nav mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <div className="nav-link active" aria-current="page">Profile</div>
+                                <div className="nav-link active" aria-current="page" >Profile</div>
                             </li>
                         </ul>
                     </div>
